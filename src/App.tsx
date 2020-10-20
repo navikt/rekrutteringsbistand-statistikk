@@ -1,6 +1,9 @@
-import React from 'react'
+import React, {FunctionComponent} from 'react'
 
-function App() {
+interface Props {
+}
+
+const App: FunctionComponent<Props> = () => {
     return (
         <div className="App">
             <header className="App-header">
