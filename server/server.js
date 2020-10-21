@@ -9,13 +9,7 @@ const WEB_PATH = '/statistikk';
 const buildPath = path.join(__dirname, '../build');
 
 const startServer = () => {
-    app.use(
-        `${WEB_PATH}/static`,
-        express.static(`${buildPath}/static`, {
-            immutable: true,
-            maxAge: 365000000,
-        })
-    );
+    app.use(`${WEB_PATH}/static`, express.static(buildPath));
 
     app.use(`${WEB_PATH}/asset-manifest.json`, express.static(`${buildPath}/asset-manifest.json`));
 
