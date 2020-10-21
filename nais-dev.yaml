@@ -1,0 +1,18 @@
+apiVersion: nais.io/v1alpha1
+kind: Application
+metadata:
+    name: rekrutteringsbistand-statistikk
+    namespace: default
+    labels:
+        team: arbeidsgiver
+spec:
+    image: {{ image }}
+    port: 3000
+    ingresses:
+        - https://app-q0.adeo.no/rekrutteringsbistand-statistikk/
+    liveness:
+        initialDelay: 5
+        path: /rekrutteringsbistand-statistikk/internal/isAlive
+    readiness:
+        initialDelay: 5
+        path: /rekrutteringsbistand-statistikk/internal/isReady
