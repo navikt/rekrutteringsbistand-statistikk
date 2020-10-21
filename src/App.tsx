@@ -1,18 +1,13 @@
-import React, {FunctionComponent} from 'react'
+import React, { FunctionComponent } from 'react';
 
-interface Props {
-}
-
-const App: FunctionComponent<Props> = () => {
+const App: FunctionComponent = () => {
     return (
         <div className="App">
             <header className="App-header">
-                <p>
-                    Rekrutteringsbistand-header
-                </p>
+                <p>Rekrutteringsbistand-statistikk</p>
             </header>
         </div>
-    )
-}
+    );
+};
 
-export default App
+export default App;
