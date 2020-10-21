@@ -15,8 +15,8 @@ const RemoveCssHashPlugin = {
 
             if (options.filename && options.filename.endsWith('.css')) {
                 console.log('rewriting target', options);
-                options.filename = 'css/[name].css';
-                options.chunkFilename = 'css/[name].chunk.css';
+                options.filename = 'static/css/[name].css';
+                options.chunkFilename = 'static/css/[name].chunk.css';
             }
         });
 
@@ -39,7 +39,7 @@ const RemoveJsHashPlugin = {
                 },
                 output: {
                     path: buildPath,
-                    filename: 'js/rekrutteringsbistand-statistikk.js',
+                    filename: 'static/js/rekrutteringsbistand-statistikk.js',
                 },
             },
         };

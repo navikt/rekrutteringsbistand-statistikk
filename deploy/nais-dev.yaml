@@ -13,7 +13,7 @@ spec:
         - https://rekrutteringsbistand.nais.preprod.local/statistikk
     liveness:
         initialDelay: 5
-        path: /rekrutteringsbistand-statistikk/internal/isAlive
+        path: /statistikk/internal/isAlive
     readiness:
         initialDelay: 5
-        path: /rekrutteringsbistand-statistikk/internal/isReady
+        path: /statistikk/internal/isReady
