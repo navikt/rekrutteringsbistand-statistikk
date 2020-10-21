@@ -8,7 +8,7 @@ Statistikk om formidling for veiledere.
 npm install
 ```
 
-## Utvikling
+## Utvikling 
 
 ```
 npm start
