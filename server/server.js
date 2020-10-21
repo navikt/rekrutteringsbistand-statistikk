@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 
 const PORT = 3000;
-const BASE_PATH = '/rekrutteringsbistand-statistikk';
+const BASE_PATH = '/statistikk';
 
 const buildPath = path.join(__dirname, '../build');
 
