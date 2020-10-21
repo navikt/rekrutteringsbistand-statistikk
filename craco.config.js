@@ -53,14 +53,14 @@ module.exports = {
         postcss: {
             plugins: [
                 cssprefixer({
-                    prefix: '.header',
-                    exclude: ['html', 'body', '.header'],
+                    prefix: '.statistikk',
+                    exclude: ['html', 'body', '.statistikk'],
                     transform: function (prefix, selector, prefixedSelector) {
                         if (selector.startsWith('body ')) {
                             return `body ${prefix} ${selector.slice(5)}`;
                         } else if (selector.startsWith('html ')) {
                             return `html ${prefix} ${selector.slice(5)}`;
-                        } else if (selector.startsWith('.dekorator ')) {
+                        } else if (selector.startsWith('.statistikk ')) {
                             return selector;
                         } else if (selector.includes('modal')) {
                             return selector;
