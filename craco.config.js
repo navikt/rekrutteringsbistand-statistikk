@@ -39,7 +39,7 @@ const RemoveJsHashPlugin = {
                 },
                 output: {
                     path: buildPath,
-                    filename: 'js/rekrutteringsbistand-header.js',
+                    filename: 'js/rekrutteringsbistand-statistikk.js',
                 },
             },
         };
