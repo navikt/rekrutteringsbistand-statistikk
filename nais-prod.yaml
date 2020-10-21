@@ -2,10 +2,11 @@ apiVersion: nais.io/v1alpha1
 kind: Application
 metadata:
     name: rekrutteringsbistand-statistikk
-    namespace: arbeidsgiver
+    namespace: default
     labels:
         team: arbeidsgiver
 spec:
+    # prettier-ignore
     image: {{ image }}
     port: 3000
     ingresses:
