@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import Navspa from '@navikt/navspa';
 
 const App: FunctionComponent = () => {
     return (
@@ -9,5 +10,7 @@ const App: FunctionComponent = () => {
         </div>
     );
 };
+
+Navspa.eksporter('rekrutteringsbistand-statistikk', App);
 
 export default App;
