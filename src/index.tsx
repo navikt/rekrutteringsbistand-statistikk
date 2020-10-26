@@ -5,10 +5,11 @@ import App from './App';
 import Utviklingsapp from './utviklingsapp/Utviklingsapp';
 import './index.css';
 
-const utviklingsnode = document.getElementById('rekrutteringsbistand-statistikk-utvikling');
+const erProd = process.env.NODE_ENV === 'production';
+const eksporterApp = process.env.REACT_APP_EXPORT || erProd;
 
-if (utviklingsnode) {
-    ReactDOM.render(<Utviklingsapp />, utviklingsnode);
-} else {
+if (eksporterApp) {
     Navspa.eksporter('rekrutteringsbistand-statistikk', App);
+} else {
+    ReactDOM.render(<Utviklingsapp />, document.getElementById('utviklingsapp'));
 }

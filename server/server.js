@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const basePath = '/statistikk';
 const buildPath = path.join(__dirname, '../build');
 

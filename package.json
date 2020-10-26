@@ -2,6 +2,7 @@
     "name": "rekrutteringsbistand-statistikk",
     "version": "0.1.0",
     "private": true,
+    "port": 3001,
     "homepage": "/statistikk",
     "dependencies": {
         "@navikt/navspa": "^1.0.3",
@@ -12,6 +13,7 @@
     },
     "scripts": {
         "start": "craco start",
+        "start:export": "REACT_APP_EXPORT=true craco start",
         "build": "craco build",
         "test": "craco test",
         "eject": "craco eject"
