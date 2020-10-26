@@ -1,11 +1,14 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 
 const App: FunctionComponent = () => {
+    const [teller, setTeller] = useState<number>(0);
+
     return (
         <div className="App">
-            <header className="App-header">
-                <p>Rekrutteringsbistand-statistikk</p>
-            </header>
+            <h2 className="App-header">Rekrutteringsbistand-statistikk</h2>
+            <button onClick={() => setTeller(teller + 1)}>-</button>
+            {teller}
+            <button onClick={() => setTeller(teller - 1)}>+</button>
         </div>
     );
 };
