@@ -4,7 +4,6 @@
     "private": true,
     "homepage": "/statistikk",
     "dependencies": {
-        "@navikt/navspa": "^1.0.3",
         "react": "^16.14.0",
         "react-dom": "^16.14.0",
         "react-scripts": "^3.4.4",
@@ -12,6 +11,7 @@
     },
     "scripts": {
         "start": "craco start",
+        "start:export": "REACT_APP_EXPORT=true craco start",
         "build": "craco build",
         "test": "craco test",
         "eject": "craco eject"

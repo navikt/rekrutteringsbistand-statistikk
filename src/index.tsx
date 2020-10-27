@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Navspa from '@navikt/navspa';
 import App from './App';
 import Utviklingsapp from './utviklingsapp/Utviklingsapp';
+import eksporterApp from './eksporterApp';
 import './index.css';
 
-const utviklingsnode = document.getElementById('rekrutteringsbistand-statistikk-utvikling');
+const erProd = process.env.NODE_ENV === 'production';
+const skalEksporteres = process.env.REACT_APP_EXPORT || erProd;
 
-if (utviklingsnode) {
-    ReactDOM.render(<Utviklingsapp />, utviklingsnode);
+if (skalEksporteres) {
+    eksporterApp('rekrutteringsbistand-statistikk', App);
 } else {
-    Navspa.eksporter('rekrutteringsbistand-statistikk', App);
+    ReactDOM.render(<Utviklingsapp />, document.getElementById('utviklingsapp'));
 }
