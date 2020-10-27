@@ -1,15 +1,7 @@
-import { AppProps } from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const defaultProps = {
-    hilsen: '',
-};
-
-const renderApp = (component: React.FunctionComponent<AppProps>) => (
-    element: HTMLElement,
-    props: AppProps = defaultProps
-) => {
+const renderApp = (component: React.FunctionComponent) => (element: HTMLElement, props: Object) => {
     ReactDOM.render(React.createElement(component, props), element);
 };
 
