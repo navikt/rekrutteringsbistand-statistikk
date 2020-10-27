@@ -1,5 +1,52 @@
+const path = require('path');
+const buildPath = path.resolve(__dirname, './build');
 const CracoLessPlugin = require('craco-less');
 const cssprefixer = require('postcss-prefix-selector');
+
+const RemoveCssHashPlugin = {
+    overrideWebpackConfig: ({ webpackConfig }) => {
+        const plugins = webpackConfig.plugins;
+        plugins.forEach((plugin) => {
+            const options = plugin.options;
+
+            if (!options) {
+                return;
+            }
+
+            if (options.filename && options.filename.endsWith('.css')) {
+                console.log('rewriting target', options);
+                options.filename = 'static/css/[name].css';
+                options.chunkFilename = 'static/css/[name].chunk.css';
+            }
+        });
+
+        return webpackConfig;
+    },
+};
+
+const RemoveJsHashPlugin = {
+    overrideCracoConfig: ({ cracoConfig }) => {
+        cracoConfig.webpack = {
+            configure: {
+                optimization: {
+                    splitChunks: {
+                        cacheGroups: {
+                            default: false,
+                            vendors: false,
+                        },
+                    },
+                    runtimeChunk: false,
+                },
+                output: {
+                    path: buildPath,
+                    filename: 'static/js/rekrutteringsbistand-statistikk.js',
+                },
+            },
+        };
+
+        return cracoConfig;
+    },
+};
 
 module.exports = {
     style: {
@@ -24,5 +71,9 @@ module.exports = {
             ],
         },
     },
-    plugins: [{ plugin: CracoLessPlugin }],
+    plugins: [
+        { plugin: CracoLessPlugin },
+        { plugin: RemoveCssHashPlugin },
+        { plugin: RemoveJsHashPlugin },
+    ],
 };
