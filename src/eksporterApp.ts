@@ -10,9 +10,10 @@ const unmountApp = (element: HTMLElement) => {
 };
 
 const eksporterApp = (navn: string, component: any) => {
-    (window as any)[navn] = {};
-    (window as any)[navn].render = renderApp(component);
-    (window as any)[navn].unmount = unmountApp;
+    (window as any)[navn] = {
+        render: renderApp(component),
+        unmount: unmountApp,
+    };
 };
 
 export default eksporterApp;
