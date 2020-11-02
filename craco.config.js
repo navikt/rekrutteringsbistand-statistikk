@@ -54,7 +54,7 @@ module.exports = {
             plugins: [
                 cssprefixer({
                     prefix: '.statistikk',
-                    exclude: ['html', 'body', '.statistikk'],
+                    exclude: ['html', 'body', '.statistikk', '.utviklingsapp'],
                     transform: function (prefix, selector, prefixedSelector) {
                         if (selector.startsWith('body ')) {
                             return `body ${prefix} ${selector.slice(5)}`;
