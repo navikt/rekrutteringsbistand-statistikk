@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent } from 'react';
 import liste from './ikoner/liste.svg';
 import blyant from './ikoner/blyant.svg';
 import kvinne from './ikoner/kvinne.svg';
@@ -7,46 +7,44 @@ import { LenkepanelBase } from 'nav-frontend-lenkepanel';
 import { Systemtittel } from 'nav-frontend-typografi';
 import './Hurtiglenker.less';
 
-const Lenker: FunctionComponent = () => {
+const Hurtiglenker: FunctionComponent = () => {
     return (
         <nav className="hurtiglenker">
             <LenkepanelMedIkon
-                ikon={<img src={liste} alt="" />}
                 href="/stillinger/minestillinger"
                 tittel="Mine stillinger"
+                ikonSrc={liste}
             />
             <LenkepanelMedIkon
-                ikon={<img src={blyant} alt="" />}
                 href="/stillinger/stilling"
                 tittel="Opprett ny stilling"
+                ikonSrc={blyant}
             />
+            <LenkepanelMedIkon href="/stillinger" tittel="Finn kandidater" ikonSrc={kvinne} />
             <LenkepanelMedIkon
-                ikon={<img src={kvinne} alt="" />}
-                href="/stillinger"
-                tittel="Finn kandidater"
-            />
-            <LenkepanelMedIkon
-                ikon={<img src={checkliste} alt="" />}
                 href="/kandidater/lister"
                 tittel="Se kandidatlister"
+                ikonSrc={checkliste}
             />
         </nav>
     );
 };
 
 const LenkepanelMedIkon: FunctionComponent<{
-    ikon: ReactNode;
     tittel: string;
     href: string;
-}> = ({ ikon, tittel, href }) => (
+    ikonSrc: string;
+}> = ({ tittel, href, ikonSrc }) => (
     <LenkepanelBase className="hurtiglenker__lenkepanel" border href={href}>
         <div className="hurtiglenker__lenkeinnhold">
-            <div className="hurtiglenker__lenkeikon">{ikon}</div>
-            <Systemtittel className="hurtiglenker__lenketittel lenkepanel__heading">
+            <div className="hurtiglenker__lenkeikon">
+                <img src={ikonSrc} alt="" />
+            </div>
+            <Systemtittel tag="span" className="hurtiglenker__lenketittel lenkepanel__heading">
                 {tittel}
             </Systemtittel>
         </div>
     </LenkepanelBase>
 );
 
-export default Lenker;
+export default Hurtiglenker;
