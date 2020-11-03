@@ -1,8 +1,8 @@
 import React, { FunctionComponent, ReactNode } from 'react';
-import { ReactComponent as Liste } from './ikoner/Liste.svg';
-import { ReactComponent as Blyant } from './ikoner/Blyant.svg';
-import { ReactComponent as Kvinne } from './ikoner/Kvinne.svg';
-import { ReactComponent as Checkliste } from './ikoner/Checkliste.svg';
+import liste from './ikoner/liste.svg';
+import blyant from './ikoner/blyant.svg';
+import kvinne from './ikoner/kvinne.svg';
+import checkliste from './ikoner/checkliste.svg';
 import { LenkepanelBase } from 'nav-frontend-lenkepanel';
 import { Systemtittel } from 'nav-frontend-typografi';
 import './Hurtiglenker.less';
@@ -11,18 +11,22 @@ const Lenker: FunctionComponent = () => {
     return (
         <nav className="hurtiglenker">
             <LenkepanelMedIkon
-                ikon={<Liste />}
+                ikon={<img src={liste} alt="" />}
                 href="/stillinger/minestillinger"
                 tittel="Mine stillinger"
             />
             <LenkepanelMedIkon
-                ikon={<Blyant />}
+                ikon={<img src={blyant} alt="" />}
                 href="/stillinger/stilling"
                 tittel="Opprett ny stilling"
             />
-            <LenkepanelMedIkon ikon={<Kvinne />} href="/stillinger" tittel="Finn kandidater" />
             <LenkepanelMedIkon
-                ikon={<Checkliste />}
+                ikon={<img src={kvinne} alt="" />}
+                href="/stillinger"
+                tittel="Finn kandidater"
+            />
+            <LenkepanelMedIkon
+                ikon={<img src={checkliste} alt="" />}
                 href="/kandidater/lister"
                 tittel="Se kandidatlister"
             />
@@ -30,13 +34,11 @@ const Lenker: FunctionComponent = () => {
     );
 };
 
-type LenkepanelMedIkonProps = {
+const LenkepanelMedIkon: FunctionComponent<{
     ikon: ReactNode;
     tittel: string;
     href: string;
-};
-
-const LenkepanelMedIkon: FunctionComponent<LenkepanelMedIkonProps> = ({ ikon, tittel, href }) => (
+}> = ({ ikon, tittel, href }) => (
     <LenkepanelBase className="hurtiglenker__lenkepanel" border href={href}>
         <div className="hurtiglenker__lenkeinnhold">
             <div className="hurtiglenker__lenkeikon">{ikon}</div>

@@ -9,7 +9,9 @@ export type AppProps = {
 const App: FunctionComponent<AppProps> = ({ navKontor }) => {
     return (
         <div className="statistikk">
-            <Hurtiglenker />
+            <div className="app">
+                <Hurtiglenker />
+            </div>
         </div>
     );
 };
