@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 const basePath = '/statistikk';
 const buildPath = path.join(__dirname, '../build');
 
@@ -13,8 +13,8 @@ const startServer = () => {
     app.get(`${basePath}/internal/isAlive`, (req, res) => res.sendStatus(200));
     app.get(`${basePath}/internal/isReady`, (req, res) => res.sendStatus(200));
 
-    app.listen(PORT, () => {
-        console.log('Server kjører på port', PORT);
+    app.listen(port, () => {
+        console.log('Server kjører på port', port);
     });
 };
 

@@ -2,14 +2,11 @@ import React, { FunctionComponent } from 'react';
 import { Systemtittel } from 'nav-frontend-typografi';
 import App from '../App';
 import './Utviklingsapp.less';
-
-// Alle klassenavn blir prefikset med ".statistikk" i craco-configen, så også koden
-// som brukes under utvikling må wrappes i et element med dette klassenavnet.
-const klassenavnForHeader = 'statistikk';
+import { cssScopeForApp } from '../index';
 
 const Utviklingsapp: FunctionComponent = () => (
-    <>
-        <header className={klassenavnForHeader}>
+    <div className={cssScopeForApp}>
+        <header>
             <Systemtittel className="utviklingsapp">
                 Utviklingsapp for rekrutteringsbistand-statistikk
             </Systemtittel>
@@ -17,7 +14,7 @@ const Utviklingsapp: FunctionComponent = () => (
         <main>
             <App navKontor="0239" />
         </main>
-    </>
+    </div>
 );
 
 export default Utviklingsapp;
