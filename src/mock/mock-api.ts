@@ -1,5 +1,4 @@
 import fetchMock from 'fetch-mock';
-import { antallFormidlingerUrl } from '../api';
 import { antallFormidlinger } from './testdata';
 
-fetchMock.get(antallFormidlingerUrl, antallFormidlinger);
+fetchMock.get('/rekrutteringsbistand-statistikk-api/statistikk', antallFormidlinger);

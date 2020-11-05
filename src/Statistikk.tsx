@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { antallFormidlingerUrl, useAntallFormidlinger } from './api';
+import { idag, trettiDagerSiden } from './datoUtils';
 
 type Props = {
     navKontor: string;
@@ -11,20 +11,16 @@ type AntallFormidlingerInboundDto = {
 };
 
 const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
-    const fraOgMed = new Date();
-    const tilOgMed = new Date();
-
     const [antallPresentert, setAntallPresentert] = useState<number>(0);
     const [antallFåttJobben, setAntallFåttJobben] = useState<number>(0);
 
     useEffect(() => {
         const url =
-            antallFormidlingerUrl +
-            '?' +
+            '/rekrutteringsbistand-statistikk-api/statistikk?' +
             new URLSearchParams({
-                fraOgMed: fraOgMed.toDateString(),
-                tilOgMed: tilOgMed.toDateString(),
-                navKontor: navKontor,
+                fraOgMed: trettiDagerSiden(),
+                tilOgMed: idag(),
+                navKontor,
             });
 
         const hentData = async () => {
@@ -33,21 +29,18 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
                 credentials: 'same-origin',
             });
             if (respons.ok) {
-                setAntallFåttJobben(respons.)
+                const formidlinger: AntallFormidlingerInboundDto = await respons.json();
+                setAntallPresentert(formidlinger.antallPresentert);
+                setAntallFåttJobben(formidlinger.antallFåttJobben);
             }
         };
         hentData();
-    }, [fraOgMed, tilOgMed, navKontor]);
-
-    // TODO: Fiks disse
-    if (isLoading) return <div>Laster</div>;
-    if (error) return <div>Feil</div>;
-    if (!data) return <div>ingen data</div>;
+    }, [navKontor]);
 
     return (
         <div>
-            Fått jobben: {data.antallFåttJobben}
-            Presenterte: {data.antallPresentert}
+            Fått jobben: {antallFåttJobben}
+            Presenterte: {antallPresentert}
         </div>
     );
 };
