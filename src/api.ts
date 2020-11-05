@@ -7,7 +7,8 @@ export const useAntallFormidlinger = (
 ): Response<AntallFormidlingerInboundDto> => {
     const { data, error } = useSWR(
         [antallFormidlingerUrl, fraOgMed, tilOgMed, navKontor],
-        (url, fraOgMed, tilOgMed, navKontor) => fetcher(url, { fraOgMed, tilOgMed, navKontor })
+        (antallFormidlingerUrl, fraOgMed, tilOgMed, navKontor) =>
+            fetcher(antallFormidlingerUrl, { fraOgMed, tilOgMed, navKontor })
     );
     return {
         data: data,
@@ -45,9 +46,29 @@ type AntallFormidlingerInboundDto = {
     antallFåttJobben: number;
 };
 
+// TODO sende med cookie
 const fetcher = (...args: [url: string, body: any]) => {
     const [url, body] = args;
     return fetch(url, {
-        headers: { 'Content-Type': 'application/json', body: JSON.stringify(body) },
+        body: JSON.stringify(body),
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
     }).then((res) => res.json());
+};
+
+export const hentAntallFormidlinger = async (fraOgMed: Date, tilOgMed: Date, navKontor: string) => {
+    try {
+        const respons = await fetch(antallFormidlingerUrl + fnr, {
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'same-origin',
+        });
+        if (!respons.ok) {
+            return { status: Status.Feil, statusKode: respons.status };
+        }
+
+        const kandidat = await respons.json();
+        return { status: Status.Suksess, data: kandidat };
+    } catch (error) {
+        return ukjentFeil;
+    }
 };
