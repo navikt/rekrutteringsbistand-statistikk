@@ -10,13 +10,15 @@ type AntallFormidlingerInboundDto = {
     antallFåttJobben: number;
 };
 
+const apiBasePath = '/statistikk/api';
+
 const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
     const [antallPresentert, setAntallPresentert] = useState<number>(0);
     const [antallFåttJobben, setAntallFåttJobben] = useState<number>(0);
 
     useEffect(() => {
         const url =
-            '/rekrutteringsbistand-statistikk-api/statistikk?' +
+            `${apiBasePath}/statistikk?` +
             new URLSearchParams({
                 fraOgMed: trettiDagerSiden(),
                 tilOgMed: idag(),

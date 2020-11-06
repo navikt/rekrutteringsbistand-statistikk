@@ -10,9 +10,11 @@ export const trettiDagerSiden = (): string => {
 export const idag = (): string => formaterDato(new Date());
 
 const formaterDato = (dato: Date): string => {
-    const dag = dato.getDate();
-    const måned = dato.getMonth() + 1;
+    const dag = medNull(dato.getDate());
+    const måned = medNull(dato.getMonth() + 1);
     const år = dato.getFullYear();
 
     return `${år}-${måned}-${dag}`;
 };
+
+const medNull = (n: number) => (n < 10 ? '0' + n : n);
