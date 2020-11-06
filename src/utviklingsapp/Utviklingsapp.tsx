@@ -1,23 +1,34 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Systemtittel } from 'nav-frontend-typografi';
+import { cssScopeForApp } from '../index';
 import App from '../App';
 import './Utviklingsapp.less';
 
-// Alle klassenavn blir prefikset med ".statistikk" i craco-configen, så også koden
-// som brukes under utvikling må wrappes i et element med dette klassenavnet.
-const klassenavnForHeader = 'statistikk';
+const Utviklingsapp: FunctionComponent = () => {
+    const [navKontor, setNavKontor] = useState<string | null>(null);
 
-const Utviklingsapp: FunctionComponent = () => (
-    <>
-        <header className={klassenavnForHeader}>
-            <Systemtittel className="utviklingsapp">
-                Utviklingsapp for rekrutteringsbistand-statistikk
-            </Systemtittel>
-        </header>
-        <main>
-            <App navKontor="0239" />
-        </main>
-    </>
-);
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setNavKontor('0239');
+        }, 500);
+
+        return () => {
+            clearTimeout(timeout);
+        };
+    });
+
+    return (
+        <div className={cssScopeForApp}>
+            <header>
+                <Systemtittel className="utviklingsapp">
+                    Utviklingsapp for rekrutteringsbistand-statistikk
+                </Systemtittel>
+            </header>
+            <main>
+                <App navKontor={navKontor} />
+            </main>
+        </div>
+    );
+};
 
 export default Utviklingsapp;

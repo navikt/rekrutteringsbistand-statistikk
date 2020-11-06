@@ -17,3 +17,8 @@ spec:
     readiness:
         initialDelay: 5
         path: /statistikk/internal/isReady
+    env:
+        - name: NODE_EXTRA_CA_CERTS
+          value: /etc/ssl/ca-bundle.pem
+        - name: STATISTIKK_API_URL
+          value: https://arbeidsgiver.nais.preprod.local/rekrutteringsbistand-statistikk-api

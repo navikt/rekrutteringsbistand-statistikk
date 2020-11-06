@@ -1,5 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import Hurtiglenker from './hurtiglenker/Hurtiglenker';
+import Statistikk from './statistikk/Statistikk';
+import NavFrontendSpinner from 'nav-frontend-spinner';
 import './App.less';
 
 export type AppProps = {
@@ -8,10 +10,9 @@ export type AppProps = {
 
 const App: FunctionComponent<AppProps> = ({ navKontor }) => {
     return (
-        <div className="statistikk">
-            <div className="app">
-                <Hurtiglenker />
-            </div>
+        <div className="app">
+            <Hurtiglenker />
+            {navKontor ? <Statistikk navKontor={navKontor} /> : <NavFrontendSpinner />}
         </div>
     );
 };
