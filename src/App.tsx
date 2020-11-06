@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import Hurtiglenker from './hurtiglenker/Hurtiglenker';
+import Statistikk from './statistikk/Statistikk';
 import './App.less';
-import Statistikk from './Statistikk';
 
 export type AppProps = {
     navKontor: string | null;

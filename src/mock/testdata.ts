@@ -1,4 +1,4 @@
 export const antallFormidlinger = {
-    antallPresentert: 145,
-    antallFåttJobben: 87,
+    antallFåttJobben: 26,
+    antallPresentert: 108,
 };
