@@ -9,18 +9,19 @@ const statistikkApiUrl = process.env.STATISTIKK_API_URL;
 const basePath = '/statistikk';
 const buildPath = path.join(__dirname, '../build');
 
-const proxyTilStatistikkApi = (url) =>
-    createProxyMiddleware(url, {
-        target: statistikkApiUrl,
+const setupProxy = (fraPath, tilTarget) =>
+    createProxyMiddleware(fraPath, {
+        target: tilTarget,
         changeOrigin: true,
-        pathRewrite: (path) => path.replace(url, ''),
+        secure: true,
+        pathRewrite: (path) => path.replace(fraPath, ''),
     });
 
 const startServer = () => {
     app.use(`${basePath}/static`, express.static(buildPath + '/static'));
     app.use(`${basePath}/asset-manifest.json`, express.static(`${buildPath}/asset-manifest.json`));
 
-    app.use(proxyTilStatistikkApi(`${basePath}/api`));
+    app.use(setupProxy(`${basePath}/api`, statistikkApiUrl));
 
     app.get(`${basePath}/internal/isAlive`, (req, res) => res.sendStatus(200));
     app.get(`${basePath}/internal/isReady`, (req, res) => res.sendStatus(200));
