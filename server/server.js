@@ -9,6 +9,7 @@ const statistikkApiUrl = process.env.STATISTIKK_API_URL;
 const basePath = '/statistikk';
 const buildPath = path.join(__dirname, '../build');
 
+// Krever ekstra miljøvariabler, se nais.yaml
 const setupProxy = (fraPath, tilTarget) =>
     createProxyMiddleware(fraPath, {
         target: tilTarget,
