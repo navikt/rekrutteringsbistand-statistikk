@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import Utviklingsapp from './utviklingsapp/Utviklingsapp';
@@ -15,8 +15,14 @@ if (process.env.REACT_APP_MOCK) {
     require('./mock/mock-api');
 }
 
+const AppMedCssScope: FunctionComponent = (props: any) => (
+    <div className={cssScopeForApp}>
+        <App {...props} />
+    </div>
+);
+
 if (skalEksporteres) {
-    eksporterApp('rekrutteringsbistand-statistikk', <div className={cssScopeForApp}>{App}</div>);
+    eksporterApp('rekrutteringsbistand-statistikk', AppMedCssScope);
 } else {
     ReactDOM.render(<Utviklingsapp />, document.getElementById('utviklingsapp'));
 }
