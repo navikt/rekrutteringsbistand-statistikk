@@ -1,11 +1,18 @@
 export const trettiDagerSiden = (): string => {
     const dato = new Date();
-    dato.setDate(dato.getDate() - 30);
-    return dato.toLocaleDateString('en-EN', options);
+
+    const minusTrettiDager = dato.getDate() - 30;
+    dato.setDate(minusTrettiDager);
+
+    return formaterDato(dato);
 };
 
-export const idag = (): string => {
-    return new Date().toLocaleDateString('en-US', options); // TODO formatere dato til YYYY-MM-DD
-};
+export const idag = (): string => formaterDato(new Date());
 
-const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+const formaterDato = (dato: Date): string => {
+    const dag = dato.getDate();
+    const måned = dato.getMonth() + 1;
+    const år = dato.getFullYear();
+
+    return `${år}-${måned}-${dag}`;
+};
