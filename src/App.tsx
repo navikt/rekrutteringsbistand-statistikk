@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import Hurtiglenker from './hurtiglenker/Hurtiglenker';
 import Statistikk from './statistikk/Statistikk';
+import NavFrontendSpinner from 'nav-frontend-spinner';
 import './App.less';
 
 export type AppProps = {
@@ -11,7 +12,7 @@ const App: FunctionComponent<AppProps> = ({ navKontor }) => {
     return (
         <div className="app">
             <Hurtiglenker />
-            {navKontor ? <Statistikk navKontor={navKontor} /> : <div>NAV-kontor må være satt</div>}
+            {navKontor ? <Statistikk navKontor={navKontor} /> : <NavFrontendSpinner />}
         </div>
     );
 };
