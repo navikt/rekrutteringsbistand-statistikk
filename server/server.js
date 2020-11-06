@@ -21,7 +21,7 @@ const startServer = () => {
     app.use(`${basePath}/static`, express.static(buildPath + '/static'));
     app.use(`${basePath}/asset-manifest.json`, express.static(`${buildPath}/asset-manifest.json`));
 
-    app.use(`${basePath}/api`, proxyTilStatistikkApi);
+    app.use(`${basePath}/api/*`, proxyTilStatistikkApi);
 
     app.get(`${basePath}/internal/isAlive`, (req, res) => res.sendStatus(200));
     app.get(`${basePath}/internal/isReady`, (req, res) => res.sendStatus(200));
