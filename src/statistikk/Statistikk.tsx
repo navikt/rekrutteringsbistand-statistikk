@@ -13,7 +13,6 @@ type AntallFormidlingerInboundDto = {
     antallFåttJobben: number;
 };
 
-// TODO: Må denne også endres?
 const apiBasePath = '/statistikk/api';
 export const statistikkApiUrl = `${apiBasePath}/statistikk`;
 
