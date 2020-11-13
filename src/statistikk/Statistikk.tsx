@@ -13,7 +13,7 @@ type AntallFormidlingerInboundDto = {
     antallFåttJobben: number;
 };
 
-const apiBasePath = '/microfrontend-ressurser/statistikk/api';
+const apiBasePath = '/rekrutteringsbistand-statistikk/api';
 export const statistikkApiUrl = `${apiBasePath}/statistikk`;
 
 const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {

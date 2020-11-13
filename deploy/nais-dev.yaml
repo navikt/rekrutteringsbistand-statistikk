@@ -10,13 +10,13 @@ spec:
     image: {{ image }}
     port: 3000
     ingresses:
-        - https://rekrutteringsbistand.nais.preprod.local/microfrontend-ressurser/statistikk
+        - https://rekrutteringsbistand.nais.preprod.local/rekrutteringsbistand-statistikk
     liveness:
         initialDelay: 5
-        path: /microfrontend-ressurser/statistikk/internal/isAlive
+        path: /rekrutteringsbistand-statistikk/internal/isAlive
     readiness:
         initialDelay: 5
-        path: /microfrontend-ressurser/statistikk/internal/isReady
+        path: /rekrutteringsbistand-statistikk/internal/isReady
     env:
         - name: NODE_EXTRA_CA_CERTS
           value: /etc/ssl/ca-bundle.pem
