@@ -6,7 +6,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 const statistikkApiUrl = process.env.STATISTIKK_API_URL;
 
-const basePath = '/statistikk';
+const basePath = '/microfrontend-ressurser/statistikk';
 const buildPath = path.join(__dirname, '../build');
 
 // Krever ekstra miljøvariabler, se nais.yaml
@@ -22,6 +22,7 @@ const startServer = () => {
     app.use(`${basePath}/static`, express.static(buildPath + '/static'));
     app.use(`${basePath}/asset-manifest.json`, express.static(`${buildPath}/asset-manifest.json`));
 
+    // TODO: Må denne også endres?
     app.use(setupProxy(`${basePath}/api`, statistikkApiUrl));
 
     app.get(`${basePath}/internal/isAlive`, (req, res) => res.sendStatus(200));
