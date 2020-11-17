@@ -10,13 +10,13 @@ spec:
     image: {{ image }}
     port: 3000
     ingresses:
-        - https://rekrutteringsbistand.nais.adeo.no/statistikk
+        - https://rekrutteringsbistand.nais.adeo.no/rekrutteringsbistand-statistikk
     liveness:
         initialDelay: 5
-        path: /statistikk/internal/isAlive
+        path: /rekrutteringsbistand-statistikk/internal/isAlive
     readiness:
         initialDelay: 5
-        path: /statistikk/internal/isReady
+        path: /rekrutteringsbistand-statistikk/internal/isReady
     env:
         - name: NODE_EXTRA_CA_CERTS
           value: /etc/ssl/ca-bundle.pem

@@ -6,7 +6,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 const statistikkApiUrl = process.env.STATISTIKK_API_URL;
 
-const basePath = '/statistikk';
+const basePath = '/rekrutteringsbistand-statistikk';
 const buildPath = path.join(__dirname, '../build');
 
 // Krever ekstra miljøvariabler, se nais.yaml
