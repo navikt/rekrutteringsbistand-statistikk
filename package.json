@@ -5,6 +5,8 @@
     "homepage": "/rekrutteringsbistand-statistikk",
     "dependencies": {
         "classnames": "^2.2.6",
+        "nav-frontend-alertstriper": "^3.0.37",
+        "nav-frontend-alertstriper-style": "^2.0.30",
         "nav-frontend-chevron-style": "^0.3.9",
         "nav-frontend-ikoner-assets": "^2.0.8",
         "nav-frontend-lenkepanel": "^1.0.55",
