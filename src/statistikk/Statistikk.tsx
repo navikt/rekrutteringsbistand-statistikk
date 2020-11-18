@@ -2,8 +2,8 @@ import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
 import { idag, trettiDagerSiden, formaterDatoTilApi, formaterDatoTilVisning } from '../datoUtils';
 import Telling from './Telling';
+import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
 import './Statistikk.less';
-import AlertStripe, {AlertStripeAdvarsel} from "nav-frontend-alertstriper";
 
 type Props = {
     navKontor: string;
@@ -70,7 +70,7 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
                     beskrivelse={beskrivelseForAntallPresentert}
                     className="telling--presentert"
                 />
-                <div/>
+                <div />
                 <AlertStripeAdvarsel>
                     Tallene for presentert er feil. Vi jobber med å rette dette.
                 </AlertStripeAdvarsel>
