@@ -3,6 +3,7 @@ import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
 import { idag, trettiDagerSiden, formaterDatoTilApi, formaterDatoTilVisning } from '../datoUtils';
 import Telling from './Telling';
 import './Statistikk.less';
+import AlertStripe, {AlertStripeAdvarsel} from "nav-frontend-alertstriper";
 
 type Props = {
     navKontor: string;
@@ -65,10 +66,14 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
                     className="telling--fått-jobb"
                 />
                 <Telling
-                    tall={antallPresentert}
+                    tall="-"
                     beskrivelse={beskrivelseForAntallPresentert}
                     className="telling--presentert"
                 />
+                <div/>
+                <AlertStripeAdvarsel>
+                    Tallene for presentert er feil. Vi jobber med å rette dette.
+                </AlertStripeAdvarsel>
             </div>
         </div>
     );
