@@ -3,7 +3,7 @@ import { Element, Sidetittel } from 'nav-frontend-typografi';
 import './Telling.less';
 
 type Props = {
-    tall: number | string;
+    tall: number;
     beskrivelse: string;
     className: string;
 };
