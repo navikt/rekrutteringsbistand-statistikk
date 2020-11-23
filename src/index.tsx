@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App, { AppProps } from './App';
 import Utviklingsapp from './utviklingsapp/Utviklingsapp';
 import eksporterApp from './eksporterApp';
+import { Router } from 'react-router-dom';
 import './index.less';
 
 const skalEksporteres = process.env.REACT_APP_EXPORT || process.env.NODE_ENV === 'production';
@@ -15,9 +16,11 @@ if (process.env.REACT_APP_MOCK) {
     require('./mock/mock-api');
 }
 
-const AppMedCssScope: FunctionComponent = (props: any) => (
+const AppMedCssScope: FunctionComponent<AppProps> = (props: AppProps) => (
     <div className={cssScopeForApp}>
-        <App {...props} />
+        <Router history={props.history}>
+            <App {...props} />
+        </Router>
     </div>
 );
 
