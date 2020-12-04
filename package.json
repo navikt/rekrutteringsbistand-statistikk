@@ -25,8 +25,9 @@
     },
     "scripts": {
         "start": "craco start",
-        "start:export": "REACT_APP_EXPORT=true craco start",
+        "start:export": "BROWSER=none REACT_APP_EXPORT=true craco start",
         "start:mock": "REACT_APP_MOCK=true craco start",
+        "start:mock:export": "BROWSER=none REACT_APP_MOCK=true REACT_APP_EXPORT=true craco start",
         "build": "craco build",
         "test": "craco test",
         "eject": "craco eject"
