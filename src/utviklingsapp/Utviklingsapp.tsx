@@ -1,7 +1,8 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
+import { createBrowserHistory } from 'history';
+import { Router } from 'react-router-dom';
 import { Systemtittel } from 'nav-frontend-typografi';
 import { cssScopeForApp } from '../index';
-import { createBrowserHistory } from 'history';
 import App from '../App';
 import './Utviklingsapp.less';
 
@@ -22,14 +23,16 @@ const Utviklingsapp: FunctionComponent = () => {
 
     return (
         <div className={cssScopeForApp}>
-            <header>
-                <Systemtittel className="utviklingsapp">
-                    Utviklingsapp for rekrutteringsbistand-statistikk
-                </Systemtittel>
-            </header>
-            <main>
-                <App navKontor={navKontor} history={history} />
-            </main>
+            <Router history={history}>
+                <header>
+                    <Systemtittel className="utviklingsapp">
+                        Utviklingsapp for rekrutteringsbistand-statistikk
+                    </Systemtittel>
+                </header>
+                <main>
+                    <App navKontor={navKontor} history={history} />
+                </main>
+            </Router>
         </div>
     );
 };
