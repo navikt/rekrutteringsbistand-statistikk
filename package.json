@@ -4,6 +4,7 @@
     "private": true,
     "homepage": "/rekrutteringsbistand-statistikk",
     "dependencies": {
+        "@navikt/navspa": "^3.0.1",
         "classnames": "^2.2.6",
         "nav-frontend-alertstriper": "^3.0.37",
         "nav-frontend-alertstriper-style": "^2.0.30",
