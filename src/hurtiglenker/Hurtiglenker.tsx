@@ -23,8 +23,14 @@ const Hurtiglenker: FunctionComponent = () => {
                 tittel="Opprett ny stilling"
                 ikonSrc={blyant}
             />
-            <LenkepanelMedIkon href="/kandidater" tittel="Finn kandidater" ikonSrc={kvinne} />
             <LenkepanelMedIkon
+                erSammeApp
+                href="/kandidater"
+                tittel="Finn kandidater"
+                ikonSrc={kvinne}
+            />
+            <LenkepanelMedIkon
+                erSammeApp
                 href="/kandidater/lister"
                 tittel="Se kandidatlister"
                 ikonSrc={checkliste}
