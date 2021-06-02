@@ -11,6 +11,7 @@ spec:
     port: 3000
     ingresses:
         - https://rekrutteringsbistand.nais.adeo.no/rekrutteringsbistand-statistikk
+        - https://rekrutteringsbistand.intern.nav.no/rekrutteringsbistand-statistikk
     liveness:
         initialDelay: 5
         path: /rekrutteringsbistand-statistikk/internal/isAlive
