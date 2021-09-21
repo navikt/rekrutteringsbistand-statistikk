@@ -19,7 +19,7 @@ const Hurtiglenker: FunctionComponent = () => {
             />
             <LenkepanelMedIkon
                 erSammeApp
-                href="/stillinger/minestillinger?visOpprettStillingModal=true"
+                href="/stillinger/minestillinger?visOpprettStillingModal"
                 tittel="Opprett ny stilling"
                 ikonSrc={blyant}
             />
