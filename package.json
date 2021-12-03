@@ -30,7 +30,9 @@
         "start:mock:export": "BROWSER=none REACT_APP_MOCK=true REACT_APP_EXPORT=true craco start",
         "build": "craco build",
         "test": "craco test",
-        "eject": "craco eject"
+        "eject": "craco eject",
+        "prepare": "husky install",
+        "format": "prettier --write ."
     },
     "eslintConfig": {
         "extends": [
@@ -40,8 +42,9 @@
     },
     "prettier": {
         "tabWidth": 4,
-        "trailingComma": "es5",
         "singleQuote": true,
+        "trailingComma": "es5",
+        "arrowParens": "always",
         "printWidth": 100
     },
     "browserslist": {
@@ -68,7 +71,9 @@
         "eslint-config-prettier": "^8.2.0",
         "fetch-mock": "^9.11.0",
         "http-proxy-middleware": "^1.1.1",
+        "husky": "^7.0.0",
         "postcss-prefix-selector": "^1.9.0",
-        "prettier": "^2.2.1"
+        "prettier": "^2.5.0",
+        "pretty-quick": "^3.1.2"
     }
 }
