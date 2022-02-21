@@ -1,6 +1,7 @@
-const path = require('path');
-const express = require('express');
-const { createProxyMiddleware } = require('http-proxy-middleware');
+import path from 'path';
+import express from 'express';
+import { setupProxy } from './proxy';
+
 const app = express();
 
 const port = process.env.PORT || 3000;
@@ -8,15 +9,6 @@ const statistikkApiUrl = process.env.STATISTIKK_API_URL;
 
 const basePath = '/rekrutteringsbistand-statistikk';
 const buildPath = path.join(__dirname, '../build');
-
-// Krever ekstra miljøvariabler, se nais.yaml
-const setupProxy = (fraPath, tilTarget) =>
-    createProxyMiddleware(fraPath, {
-        target: tilTarget,
-        changeOrigin: true,
-        secure: true,
-        pathRewrite: (path) => path.replace(fraPath, ''),
-    });
 
 const startServer = () => {
     app.use(`${basePath}/static`, express.static(buildPath + '/static'));
