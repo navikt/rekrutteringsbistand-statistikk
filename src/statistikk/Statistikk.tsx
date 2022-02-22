@@ -34,10 +34,16 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'same-origin',
             });
+
             if (respons.ok) {
                 const formidlinger: AntallFormidlingerInboundDto = await respons.json();
+
                 setAntallPresentert(formidlinger.antallPresentert);
                 setAntallFåttJobben(formidlinger.antallFåttJobben);
+            } else {
+                if (respons.status === 401) {
+                    window.location.href = `/rekrutteringsbistand-statistikk/oauth2/login?redirect=${window.location.href}`;
+                }
             }
         };
         hentData();
