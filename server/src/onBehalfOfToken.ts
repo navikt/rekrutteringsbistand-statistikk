@@ -1,3 +1,4 @@
+import { response } from 'express';
 import fetch from 'node-fetch';
 
 type OboToken = {
@@ -60,13 +61,24 @@ async function hentNyttOnBehalfOfToken(accessToken: string, scope: string): Prom
             },
         });
 
+        const body = await response.json();
+
         if (response.ok) {
-            return await response.json();
+            return body;
         } else {
+            const error = body['error'];
+            const errorDescription = body['error_description'];
+
+            console.log(
+                `Klarte ikke å hente on behalf of token for scope "${scope}", årsak:`,
+                error,
+                errorDescription
+            );
+
             throw new Error(response.statusText);
         }
     } catch (e) {
-        throw new Error(e);
+        throw e;
     }
 }
 

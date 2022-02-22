@@ -27,6 +27,8 @@ export const setOnBehalfOfToken =
             res.status(500).send('Kan ikke be om OBO-token siden access-token ikke finnes');
         } else {
             try {
+                console.log('Henter on behalf of-token for scope', scope);
+
                 const token = await hentOnBehalfOfToken(accessToken, scope);
                 req.headers.authorization = `Bearer ${token.access_token}`;
                 next();
