@@ -13,7 +13,7 @@ type AntallFormidlingerInboundDto = {
     antallFåttJobben: number;
 };
 
-const apiBasePath = '/rekrutteringsbistand-statistikk/api';
+const apiBasePath = '/statistikk-api';
 export const statistikkApiUrl = `${apiBasePath}/statistikk`;
 
 const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
@@ -40,10 +40,6 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
 
                 setAntallPresentert(formidlinger.antallPresentert);
                 setAntallFåttJobben(formidlinger.antallFåttJobben);
-            } else {
-                if (respons.status === 401) {
-                    window.location.href = `/rekrutteringsbistand-statistikk/oauth2/login?redirect=${window.location.href}`;
-                }
             }
         };
         hentData();
