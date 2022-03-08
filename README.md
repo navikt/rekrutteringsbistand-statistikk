@@ -11,12 +11,12 @@ npm install
 ## Utvikling 
 
 ```
-npm start
+npm run start:mock
 ```
 
-Med mock:
+Uten mock:
 ```
-npm run start:mock
+npm run start
 ```
 
 # Henvendelser
