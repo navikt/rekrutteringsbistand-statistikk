@@ -13,7 +13,7 @@ type AntallFormidlingerInboundDto = {
     antallFåttJobben: number;
 };
 
-const apiBasePath = '/rekrutteringsbistand-statistikk/api';
+const apiBasePath = '/statistikk-api';
 export const statistikkApiUrl = `${apiBasePath}/statistikk`;
 
 const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
@@ -34,8 +34,10 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'same-origin',
             });
+
             if (respons.ok) {
                 const formidlinger: AntallFormidlingerInboundDto = await respons.json();
+
                 setAntallPresentert(formidlinger.antallPresentert);
                 setAntallFåttJobben(formidlinger.antallFåttJobben);
             }
