@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import { Element, Sidetittel } from 'nav-frontend-typografi';
-import './Telling.less';
+import css from './Telling.module.css';
+import classNames from 'classnames';
 
 type Props = {
     tall: number;
@@ -9,15 +9,13 @@ type Props = {
 };
 
 const Telling: FunctionComponent<Props> = ({ tall, beskrivelse, className }) => {
-    const klassenavn = 'telling ' + className;
+    const klassenavn = classNames(css.telling, className);
 
     return (
-        <div className={klassenavn}>
-            <Sidetittel tag="p" className="telling__tall blokk-xxs">
-                {tall}
-            </Sidetittel>
-            <Element>{beskrivelse}</Element>
-        </div>
+        <p className={klassenavn}>
+            <div className={css.tall}>{tall}</div>
+            {beskrivelse}
+        </p>
     );
 };
 

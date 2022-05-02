@@ -1,0 +1,16 @@
+.statistikk {
+    text-align: center;
+    width: 100%;
+}
+
+.tidsperiode {
+    margin-top: var(--navds-spacing-1);
+    margin-bottom: var(--navds-spacing-6);
+}
+
+.tall {
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}

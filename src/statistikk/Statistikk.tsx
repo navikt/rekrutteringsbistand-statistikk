@@ -1,8 +1,9 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
+import { Heading } from '@navikt/ds-react';
 import { idag, trettiDagerSiden, formaterDatoTilApi, formaterDatoTilVisning } from '../datoUtils';
 import Telling from './Telling';
-import './Statistikk.less';
+import css from './Statistikk.module.css';
+import tellingCss from './Telling.module.css';
 
 type Props = {
     navKontor: string;
@@ -53,23 +54,24 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
     } har blitt presentert for arbeidsgiver`;
 
     return (
-        <div className="statistikk">
-            <Systemtittel tag="h1" className="blokk-xxs">
+        <div className={css.statistikk}>
+            <Heading level="1" size="medium">
                 Ditt NAV-kontor
-            </Systemtittel>
-            <Normaltekst className="blokk-l">
-                {formaterDatoTilVisning(fraOgMed)} - {formaterDatoTilVisning(tilOgMed)}
-            </Normaltekst>
-            <div className="statistikk__tall">
+            </Heading>
+            <p className={css.tidsperiode}>
+                <time dateTime={fraOgMed.toISOString()}>{formaterDatoTilVisning(fraOgMed)}</time> -{' '}
+                <time dateTime={tilOgMed.toISOString()}>{formaterDatoTilVisning(tilOgMed)}</time>
+            </p>
+            <div className={css.tall}>
                 <Telling
                     tall={antallFåttJobben}
                     beskrivelse={beskrivelseForAntallFåttJobben}
-                    className="telling--fått-jobb"
+                    className={tellingCss.fattJobb}
                 />
                 <Telling
                     tall={antallPresentert}
                     beskrivelse={beskrivelseForAntallPresentert}
-                    className="telling--presentert"
+                    className={tellingCss.presentert}
                 />
             </div>
         </div>
