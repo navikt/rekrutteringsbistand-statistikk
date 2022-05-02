@@ -3,34 +3,24 @@ import liste from './ikoner/liste.svg';
 import blyant from './ikoner/blyant.svg';
 import kvinne from './ikoner/kvinne.svg';
 import checkliste from './ikoner/checkliste.svg';
-import { LenkepanelBase } from 'nav-frontend-lenkepanel';
-import { Systemtittel } from 'nav-frontend-typografi';
-import { Link } from 'react-router-dom';
+import { Heading, LinkPanel } from '@navikt/ds-react';
 import './Hurtiglenker.less';
 
 const Hurtiglenker: FunctionComponent = () => {
     return (
         <nav className="hurtiglenker">
             <LenkepanelMedIkon
-                erSammeApp
                 href="/stillinger/minestillinger"
                 tittel="Mine stillinger"
                 ikonSrc={liste}
             />
             <LenkepanelMedIkon
-                erSammeApp
                 href="/stillinger/minestillinger?visOpprettStillingModal"
                 tittel="Opprett ny stilling"
                 ikonSrc={blyant}
             />
+            <LenkepanelMedIkon href="/kandidater" tittel="Finn kandidater" ikonSrc={kvinne} />
             <LenkepanelMedIkon
-                erSammeApp
-                href="/kandidater"
-                tittel="Finn kandidater"
-                ikonSrc={kvinne}
-            />
-            <LenkepanelMedIkon
-                erSammeApp
                 href="/kandidater/lister"
                 tittel="Se kandidatlister"
                 ikonSrc={checkliste}
@@ -43,33 +33,21 @@ const LenkepanelMedIkon: FunctionComponent<{
     tittel: string;
     href: string;
     ikonSrc: string;
-    erSammeApp?: boolean;
-}> = ({ tittel, href, ikonSrc, erSammeApp }) => (
-    <LenkepanelBase
-        className="hurtiglenker__lenkepanel"
-        border
-        linkCreator={(props) =>
-            erSammeApp ? (
-                <Link to={href} {...props}>
-                    {props.children}
-                </Link>
-            ) : (
-                <a href={href} {...props}>
-                    {props.children}
-                </a>
-            )
-        }
-        href={href}
-    >
+}> = ({ tittel, href, ikonSrc }) => (
+    <LinkPanel href={href} className="hurtiglenker__lenkepanel">
         <div className="hurtiglenker__lenkeinnhold">
             <div className="hurtiglenker__lenkeikon">
                 <img src={ikonSrc} alt="" />
             </div>
-            <Systemtittel tag="span" className="hurtiglenker__lenketittel lenkepanel__heading">
+            <Heading
+                level="2"
+                size="xlarge"
+                className="hurtiglenker__lenketittel lenkepanel__heading"
+            >
                 {tittel}
-            </Systemtittel>
+            </Heading>
         </div>
-    </LenkepanelBase>
+    </LinkPanel>
 );
 
 export default Hurtiglenker;

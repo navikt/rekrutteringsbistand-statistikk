@@ -1,5 +1,3 @@
-@import '../variabler.less';
-
 .hurtiglenker {
     display: grid;
     grid-template-columns: 1fr;
@@ -8,7 +6,7 @@
     margin-bottom: 4rem;
 
     &__lenkepanel {
-        border-color: @navGra20;
+        border-color: var(--navds-semantic-color-border-inverted);
         margin-bottom: 0;
         padding: 1rem 2rem;
     }
@@ -29,7 +27,7 @@
         }
     }
 
-    @media (min-width: @container-desktop) {
+    @media (min-width: 48rem) {
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
     }

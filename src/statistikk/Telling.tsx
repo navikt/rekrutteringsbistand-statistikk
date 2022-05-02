@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Element, Sidetittel } from 'nav-frontend-typografi';
+import Body from '@navikt/ds-react/esm/table/Body';
 import './Telling.less';
 
 type Props = {
@@ -13,10 +13,8 @@ const Telling: FunctionComponent<Props> = ({ tall, beskrivelse, className }) => 
 
     return (
         <div className={klassenavn}>
-            <Sidetittel tag="p" className="telling__tall blokk-xxs">
-                {tall}
-            </Sidetittel>
-            <Element>{beskrivelse}</Element>
+            <p className="telling__tall blokk-xxs">{tall}</p>
+            <Body>{beskrivelse}</Body>
         </div>
     );
 };

@@ -1,8 +1,9 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
 import { idag, trettiDagerSiden, formaterDatoTilApi, formaterDatoTilVisning } from '../datoUtils';
 import Telling from './Telling';
 import './Statistikk.less';
+import { Heading } from '@navikt/ds-react';
+import Body from '@navikt/ds-react/esm/table/Body';
 
 type Props = {
     navKontor: string;
@@ -54,12 +55,12 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
 
     return (
         <div className="statistikk">
-            <Systemtittel tag="h1" className="blokk-xxs">
+            <Heading level="1" size="medium">
                 Ditt NAV-kontor
-            </Systemtittel>
-            <Normaltekst className="blokk-l">
+            </Heading>
+            <Body className="blokk-l">
                 {formaterDatoTilVisning(fraOgMed)} - {formaterDatoTilVisning(tilOgMed)}
-            </Normaltekst>
+            </Body>
             <div className="statistikk__tall">
                 <Telling
                     tall={antallFåttJobben}

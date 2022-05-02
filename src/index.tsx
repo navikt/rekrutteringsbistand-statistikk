@@ -5,6 +5,7 @@ import Navspa from '@navikt/navspa';
 
 import App, { AppProps } from './App';
 import Utviklingsapp from './utviklingsapp/Utviklingsapp';
+import '@navikt/ds-css';
 import './index.less';
 
 const skalEksporteres = process.env.REACT_APP_EXPORT || process.env.NODE_ENV === 'production';
