@@ -2,10 +2,8 @@ import React, { FunctionComponent, useEffect, useState } from 'react';
 import { createBrowserHistory } from 'history';
 import { Router } from 'react-router-dom';
 import { Heading } from '@navikt/ds-react';
-import { cssScopeForApp } from '../index';
 import App from '../App';
-import '@navikt/ds-css';
-import './Utviklingsapp.less';
+import './Utviklingsapp.css';
 
 const history = createBrowserHistory();
 
@@ -23,18 +21,16 @@ const Utviklingsapp: FunctionComponent = () => {
     });
 
     return (
-        <div className={cssScopeForApp}>
-            <Router history={history}>
-                <header>
-                    <Heading size="large" className="utviklingsapp">
-                        Utviklingsapp for rekrutteringsbistand-statistikk
-                    </Heading>
-                </header>
-                <main>
-                    <App navKontor={navKontor} history={history} />
-                </main>
-            </Router>
-        </div>
+        <Router history={history}>
+            <header>
+                <Heading size="large" className="utviklingsapp">
+                    Utviklingsapp for rekrutteringsbistand-statistikk
+                </Heading>
+            </header>
+            <main>
+                <App navKontor={navKontor} history={history} />
+            </main>
+        </Router>
     );
 };
 

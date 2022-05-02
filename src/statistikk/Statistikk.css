@@ -1,0 +1,11 @@
+.statistikk {
+    text-align: center;
+    width: 100%;
+}
+
+.statistikk__tall {
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}

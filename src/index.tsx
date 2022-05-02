@@ -6,24 +6,18 @@ import Navspa from '@navikt/navspa';
 import App, { AppProps } from './App';
 import Utviklingsapp from './utviklingsapp/Utviklingsapp';
 import '@navikt/ds-css';
-import './index.less';
+import './index.css';
 
 const skalEksporteres = process.env.REACT_APP_EXPORT || process.env.NODE_ENV === 'production';
-
-// Alle klassenavn blir prefikset med ".statistikk" i craco-configen, så også koden
-// som brukes under utvikling må wrappes i et element med dette klassenavnet.
-export const cssScopeForApp = 'rekbis-statistikk';
 
 if (process.env.REACT_APP_MOCK) {
     require('./mock/mock-api');
 }
 
 const AppMedCssScope: FunctionComponent<AppProps> = (props: AppProps) => (
-    <div className={cssScopeForApp}>
-        <Router history={props.history}>
-            <App {...props} />
-        </Router>
-    </div>
+    <Router history={props.history}>
+        <App {...props} />
+    </Router>
 );
 
 if (skalEksporteres) {

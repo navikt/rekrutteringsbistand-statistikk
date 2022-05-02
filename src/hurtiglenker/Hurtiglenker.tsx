@@ -4,7 +4,7 @@ import blyant from './ikoner/blyant.svg';
 import kvinne from './ikoner/kvinne.svg';
 import checkliste from './ikoner/checkliste.svg';
 import { Heading, LinkPanel } from '@navikt/ds-react';
-import './Hurtiglenker.less';
+import './Hurtiglenker.css';
 
 const Hurtiglenker: FunctionComponent = () => {
     return (

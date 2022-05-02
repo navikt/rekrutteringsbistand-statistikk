@@ -3,7 +3,7 @@ import { History } from 'history';
 import { Loader } from '@navikt/ds-react';
 import Hurtiglenker from './hurtiglenker/Hurtiglenker';
 import Statistikk from './statistikk/Statistikk';
-import './App.less';
+import './App.css';
 
 export type AppProps = {
     navKontor: string | null;

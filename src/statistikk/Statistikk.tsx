@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { idag, trettiDagerSiden, formaterDatoTilApi, formaterDatoTilVisning } from '../datoUtils';
 import Telling from './Telling';
-import './Statistikk.less';
 import { Heading } from '@navikt/ds-react';
 import Body from '@navikt/ds-react/esm/table/Body';
+import './Statistikk.css';
 
 type Props = {
     navKontor: string;

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import Body from '@navikt/ds-react/esm/table/Body';
-import './Telling.less';
+import { BodyShort } from '@navikt/ds-react';
+import './Telling.css';
 
 type Props = {
     tall: number;
@@ -14,7 +14,7 @@ const Telling: FunctionComponent<Props> = ({ tall, beskrivelse, className }) => 
     return (
         <div className={klassenavn}>
             <p className="telling__tall blokk-xxs">{tall}</p>
-            <Body>{beskrivelse}</Body>
+            <BodyShort>{beskrivelse}</BodyShort>
         </div>
     );
 };
