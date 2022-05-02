@@ -6,10 +6,6 @@
     margin-bottom: var(--navds-spacing-16);
 }
 
-.lenkepanel {
-    padding: 1rem 2rem !important;
-}
-
 .lenkeinnhold {
     display: flex;
     align-items: center;
