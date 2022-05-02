@@ -4,7 +4,7 @@
 }
 
 .tidsperiode {
-    margin-top: 0;
+    margin-top: var(--navds-spacing-1);
     margin-bottom: var(--navds-spacing-6);
 }
 
