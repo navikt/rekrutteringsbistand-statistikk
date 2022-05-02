@@ -1,31 +1,29 @@
 .hurtiglenker {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 3fr;
     gap: 1rem;
     width: 100%;
-    margin-bottom: 4rem;
+    margin-bottom: var(--navds-spacing-16);
 }
 
-.hurtiglenker__lenkepanel {
-    border-color: var(--navds-semantic-color-border-inverted);
-    margin-bottom: 0;
+.lenkepanel {
     padding: 1rem 2rem;
 }
 
-.hurtiglenker__lenkeinnhold {
+.lenkeinnhold {
     display: flex;
     align-items: center;
 }
 
-.hurtiglenker__lenkeikon {
+.lenkeikon {
     margin-right: 2rem;
     border-radius: 50%;
     overflow: hidden;
 }
 
-.hurtiglenker__lenkeikon img {
+.lenkeikon img {
     width: 6.25rem;
-    height: 6.25rem;
+    vertical-align: middle;
 }
 
 @media (min-width: 48rem) {

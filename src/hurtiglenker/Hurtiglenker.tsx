@@ -4,11 +4,11 @@ import blyant from './ikoner/blyant.svg';
 import kvinne from './ikoner/kvinne.svg';
 import checkliste from './ikoner/checkliste.svg';
 import { Heading, LinkPanel } from '@navikt/ds-react';
-import './Hurtiglenker.css';
+import css from './Hurtiglenker.module.css';
 
 const Hurtiglenker: FunctionComponent = () => {
     return (
-        <nav className="hurtiglenker">
+        <nav className={css.hurtiglenker}>
             <LenkepanelMedIkon
                 href="/stillinger/minestillinger"
                 tittel="Mine stillinger"
@@ -34,16 +34,12 @@ const LenkepanelMedIkon: FunctionComponent<{
     href: string;
     ikonSrc: string;
 }> = ({ tittel, href, ikonSrc }) => (
-    <LinkPanel href={href} className="hurtiglenker__lenkepanel">
-        <div className="hurtiglenker__lenkeinnhold">
-            <div className="hurtiglenker__lenkeikon">
+    <LinkPanel href={href} className={css.lenkepanel}>
+        <div className={css.lenkeinnhold}>
+            <div className={css.lenkeikon}>
                 <img src={ikonSrc} alt="" />
             </div>
-            <Heading
-                level="2"
-                size="xlarge"
-                className="hurtiglenker__lenketittel lenkepanel__heading"
-            >
+            <Heading level="2" size="medium">
                 {tittel}
             </Heading>
         </div>

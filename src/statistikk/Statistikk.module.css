@@ -3,7 +3,12 @@
     width: 100%;
 }
 
-.statistikk__tall {
+.tidsperiode {
+    margin-top: 0;
+    margin-bottom: var(--navds-spacing-6);
+}
+
+.tall {
     text-align: left;
     display: grid;
     grid-template-columns: 1fr 1fr;

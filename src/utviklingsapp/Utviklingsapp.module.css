@@ -1,0 +1,7 @@
+.utviklingsapp {
+    display: flex;
+    background-color: white;
+    align-items: center;
+    padding: 1rem;
+    color: var(--navds-global-color-gray-600);
+}

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import { BodyShort } from '@navikt/ds-react';
-import './Telling.css';
+import css from './Telling.module.css';
+import classNames from 'classnames';
 
 type Props = {
     tall: number;
@@ -9,13 +9,13 @@ type Props = {
 };
 
 const Telling: FunctionComponent<Props> = ({ tall, beskrivelse, className }) => {
-    const klassenavn = 'telling ' + className;
+    const klassenavn = classNames(css.telling, className);
 
     return (
-        <div className={klassenavn}>
-            <p className="telling__tall blokk-xxs">{tall}</p>
-            <BodyShort>{beskrivelse}</BodyShort>
-        </div>
+        <p className={klassenavn}>
+            <div className={css.tall}>{tall}</div>
+            {beskrivelse}
+        </p>
     );
 };
 
