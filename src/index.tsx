@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react';
-import { Router } from 'react-router-dom';
-import ReactDOM from 'react-dom';
 import Navspa from '@navikt/navspa';
 
 import App, { AppProps } from './App';
 import Utviklingsapp from './utviklingsapp/Utviklingsapp';
 import '@navikt/ds-css';
 import './index.css';
+import Router from './Router';
+import { createRoot } from 'react-dom/client';
 
 const skalEksporteres = process.env.REACT_APP_EXPORT || process.env.NODE_ENV === 'production';
 
@@ -23,5 +23,7 @@ const AppMedCssScope: FunctionComponent<AppProps> = (props: AppProps) => (
 if (skalEksporteres) {
     Navspa.eksporter('rekrutteringsbistand-statistikk', AppMedCssScope);
 } else {
-    ReactDOM.render(<Utviklingsapp />, document.getElementById('utviklingsapp'));
+    const container = document.getElementById('utviklingsapp');
+    const root = createRoot(container!);
+    root.render(<Utviklingsapp />);
 }

@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { createBrowserHistory } from 'history';
-import { Router } from 'react-router-dom';
 import { Heading } from '@navikt/ds-react';
 import css from './Utviklingsapp.module.css';
 import App from '../App';
+import Router from '../Router';
 
 const history = createBrowserHistory();
 

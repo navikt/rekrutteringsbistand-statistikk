@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { Heading } from '@navikt/ds-react';
+import { Heading, Panel } from '@navikt/ds-react';
 import { idag, trettiDagerSiden, formaterDatoTilApi, formaterDatoTilVisning } from '../datoUtils';
 import Telling from './Telling';
 import css from './Statistikk.module.css';
@@ -74,6 +74,19 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
                     className={tellingCss.presentert}
                 />
             </div>
+            {false && (
+                <Panel border={true}>
+                    <Heading spacing level="2" size="large">
+                        Stillinger delt med kandidater i Aktivitetsplanen
+                    </Heading>
+                    <div className={css.delingstatistikk}>
+                        <Panel border={false}>Delt</Panel>
+                        <Panel border={false}>Ja</Panel>
+                        <Panel border={false}>Nei</Panel>
+                        <Panel border={false}>Svarte ikke</Panel>
+                    </div>
+                </Panel>
+            )}
         </div>
     );
 };

@@ -14,3 +14,22 @@
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
 }
+
+.delingstatistikk {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+@media (min-width: 500px) {
+    .delingstatistikk {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1000px) {
+    .delingstatistikk {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
