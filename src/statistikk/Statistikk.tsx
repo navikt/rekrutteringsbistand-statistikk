@@ -4,6 +4,7 @@ import { idag, trettiDagerSiden, formaterDatoTilApi, formaterDatoTilVisning } fr
 import Telling from './Telling';
 import css from './Statistikk.module.css';
 import tellingCss from './Telling.module.css';
+import Svartelling, { SvartellingIkon } from './Svartelling';
 
 type Props = {
     navKontor: string;
@@ -80,10 +81,26 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
                         Stillinger delt med kandidater i Aktivitetsplanen
                     </Heading>
                     <div className={css.delingstatistikk}>
-                        <Panel border={false}>Delt</Panel>
-                        <Panel border={false}>Ja</Panel>
-                        <Panel border={false}>Nei</Panel>
-                        <Panel border={false}>Svarte ikke</Panel>
+                        <Svartelling
+                            svartellingIkon={SvartellingIkon.Delt}
+                            antall={12}
+                            tellingtekst="tekst1"
+                        ></Svartelling>
+                        <Svartelling
+                            svartellingIkon={SvartellingIkon.Ja}
+                            antall={13}
+                            tellingtekst="tekst2"
+                        ></Svartelling>
+                        <Svartelling
+                            svartellingIkon={SvartellingIkon.Nei}
+                            antall={14}
+                            tellingtekst="tekst3"
+                        ></Svartelling>
+                        <Svartelling
+                            svartellingIkon={SvartellingIkon.Ubesvart}
+                            antall={15}
+                            tellingtekst="tekst4"
+                        ></Svartelling>
                     </div>
                 </Panel>
             )}
