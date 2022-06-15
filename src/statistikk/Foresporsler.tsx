@@ -20,11 +20,6 @@ const apiBasePath = '/foresporsel-om-deling-av-cv-api';
 export const foresporslerApiUrl = `${apiBasePath}/statistikk`;
 
 const Forespørsler: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilOgMed }) => {
-    /*const svarTotaltTestdata: number = 120;
-    const svarteJaTestdata: number = 22;
-    const svarteNeiTestdata: number = 30;
-    const svarteIkkeTestData: number = 40;*/
-
     const [antallSvartJa, setAntallSvartJa] = useState<number>(0);
     const [antallSvartNei, setAntallSvartNei] = useState<number>(0);
     const [antallUbesvart, setAntallUbesvart] = useState<number>(0);
