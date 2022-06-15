@@ -6,13 +6,13 @@ export enum SvartellingIkon {
     Delt,
     Ja,
     Nei,
-    Ubesvart,
+    SvarteIkke,
 }
 
 type Props = {
     svartellingIkon: SvartellingIkon;
-    antall: number;
-    tellingtekst: string;
+    oppsummering: string;
+    detaljer: string;
 };
 
 const svgX = (
@@ -32,7 +32,7 @@ const svgX = (
     </svg>
 );
 
-const Svartelling: FunctionComponent<Props> = ({ svartellingIkon, antall, tellingtekst }) => {
+const Svartelling: FunctionComponent<Props> = ({ svartellingIkon, oppsummering, detaljer }) => {
     const ikon = (valgtIkon: SvartellingIkon) => {
         switch (valgtIkon) {
             case SvartellingIkon.Delt:
@@ -46,7 +46,7 @@ const Svartelling: FunctionComponent<Props> = ({ svartellingIkon, antall, tellin
                         <SpeechBubble className={css.svartNei}></SpeechBubble>
                     </>
                 );
-            case SvartellingIkon.Ubesvart:
+            case SvartellingIkon.SvarteIkke:
                 return <SpeechBubble className={css.ubesvart}></SpeechBubble>;
         }
     };
@@ -54,8 +54,8 @@ const Svartelling: FunctionComponent<Props> = ({ svartellingIkon, antall, tellin
     return (
         <div>
             {ikon(svartellingIkon)}
-            <div>{antall}</div>
-            <div>{tellingtekst}</div>
+            <div>{oppsummering}</div>
+            <div>{detaljer}</div>
         </div>
     );
 };

@@ -54,6 +54,15 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
         antallPresentert === 1 ? 'person' : 'personer'
     } har blitt presentert for arbeidsgiver`;
 
+    const svarTotalt: number = 120;
+    const svarteJa: number = 22;
+    const svarteNei: number = 30;
+    const svarteIkke: number = 40;
+
+    const finnProsent = (tall: number) => {
+        return Math.round((tall / svarTotalt) * 100) + '%';
+    };
+
     return (
         <div className={css.statistikk}>
             <Heading level="1" size="medium">
@@ -82,23 +91,26 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
                 <div className={css.delingstatistikk}>
                     <Svartelling
                         svartellingIkon={SvartellingIkon.Delt}
-                        antall={12}
-                        tellingtekst="tekst1"
+                        oppsummering={svarTotalt + ''}
+                        detaljer="stillinger har blitt delt med kandidater i Aktivitetsplanen"
                     ></Svartelling>
                     <Svartelling
                         svartellingIkon={SvartellingIkon.Ja}
-                        antall={13}
-                        tellingtekst="tekst2"
+                        oppsummering={finnProsent(svarteJa) + ' svarte ja'}
+                        detaljer={`til at CV-en kan deles med arbeidsgiver
+                        (${svarteJa} av ${svarTotalt})`}
                     ></Svartelling>
                     <Svartelling
                         svartellingIkon={SvartellingIkon.Nei}
-                        antall={14}
-                        tellingtekst="tekst3"
+                        oppsummering={finnProsent(svarteNei) + ' svarte nei'}
+                        detaljer={`til at CV-en kan deles med arbeidsgiver
+                        (${svarteNei} av ${svarTotalt})`}
                     ></Svartelling>
                     <Svartelling
-                        svartellingIkon={SvartellingIkon.Ubesvart}
-                        antall={15}
-                        tellingtekst="tekst4"
+                        svartellingIkon={SvartellingIkon.SvarteIkke}
+                        oppsummering={finnProsent(svarteIkke) + ' svarte ikke'}
+                        detaljer={`på om CV-en kan deles med arbeidsgiver
+                        (${svarteIkke} av ${svarTotalt})`}
                     ></Svartelling>
                 </div>
             </Panel>
