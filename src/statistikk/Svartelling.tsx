@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Dialog, DialogSuccess, SpeechBubble } from '@navikt/ds-icons';
 import css from './Svartelling.module.css';
+import { Detail, Label } from '@navikt/ds-react';
 
 export enum SvartellingIkon {
     Delt,
@@ -52,10 +53,14 @@ const Svartelling: FunctionComponent<Props> = ({ svartellingIkon, oppsummering, 
     };
 
     return (
-        <div>
+        <div className={css.svartelling}>
             {ikon(svartellingIkon)}
-            <div>{oppsummering}</div>
-            <div>{detaljer}</div>
+            <Label className={css.oppsummering} spacing>
+                {oppsummering}
+            </Label>
+            <Detail size="small" className={css.detaljer}>
+                {detaljer}
+            </Detail>
         </div>
     );
 };
