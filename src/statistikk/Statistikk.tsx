@@ -75,35 +75,33 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
                     className={tellingCss.presentert}
                 />
             </div>
-            {false && (
-                <Panel border={true}>
-                    <Heading spacing level="2" size="large">
-                        Stillinger delt med kandidater i Aktivitetsplanen
-                    </Heading>
-                    <div className={css.delingstatistikk}>
-                        <Svartelling
-                            svartellingIkon={SvartellingIkon.Delt}
-                            antall={12}
-                            tellingtekst="tekst1"
-                        ></Svartelling>
-                        <Svartelling
-                            svartellingIkon={SvartellingIkon.Ja}
-                            antall={13}
-                            tellingtekst="tekst2"
-                        ></Svartelling>
-                        <Svartelling
-                            svartellingIkon={SvartellingIkon.Nei}
-                            antall={14}
-                            tellingtekst="tekst3"
-                        ></Svartelling>
-                        <Svartelling
-                            svartellingIkon={SvartellingIkon.Ubesvart}
-                            antall={15}
-                            tellingtekst="tekst4"
-                        ></Svartelling>
-                    </div>
-                </Panel>
-            )}
+            <Panel border={true}>
+                <Heading spacing level="2" size="large">
+                    Stillinger delt med kandidater i Aktivitetsplanen
+                </Heading>
+                <div className={css.delingstatistikk}>
+                    <Svartelling
+                        svartellingIkon={SvartellingIkon.Delt}
+                        antall={12}
+                        tellingtekst="tekst1"
+                    ></Svartelling>
+                    <Svartelling
+                        svartellingIkon={SvartellingIkon.Ja}
+                        antall={13}
+                        tellingtekst="tekst2"
+                    ></Svartelling>
+                    <Svartelling
+                        svartellingIkon={SvartellingIkon.Nei}
+                        antall={14}
+                        tellingtekst="tekst3"
+                    ></Svartelling>
+                    <Svartelling
+                        svartellingIkon={SvartellingIkon.Ubesvart}
+                        antall={15}
+                        tellingtekst="tekst4"
+                    ></Svartelling>
+                </div>
+            </Panel>
         </div>
     );
 };

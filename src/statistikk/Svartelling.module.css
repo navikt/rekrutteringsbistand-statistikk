@@ -1,0 +1,13 @@
+.svartJa {
+    color: green;
+}
+
+.svartNei {
+    color: red;
+    position: relative;
+}
+
+.xSign {
+    color: red;
+    position: absolute;
+}
