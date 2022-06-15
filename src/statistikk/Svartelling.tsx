@@ -14,6 +14,7 @@ type Props = {
     svartellingIkon: SvartellingIkon;
     oppsummering: string;
     detaljer: string;
+    forklaring: string;
 };
 
 const svgX = (
@@ -33,7 +34,12 @@ const svgX = (
     </svg>
 );
 
-const Svartelling: FunctionComponent<Props> = ({ svartellingIkon, oppsummering, detaljer }) => {
+const Svartelling: FunctionComponent<Props> = ({
+    svartellingIkon,
+    oppsummering,
+    detaljer,
+    forklaring,
+}) => {
     const ikon = (valgtIkon: SvartellingIkon) => {
         switch (valgtIkon) {
             case SvartellingIkon.Delt:
@@ -55,11 +61,12 @@ const Svartelling: FunctionComponent<Props> = ({ svartellingIkon, oppsummering, 
     return (
         <div className={css.svartelling}>
             {ikon(svartellingIkon)}
-            <Label className={css.oppsummering} spacing>
-                {oppsummering}
-            </Label>
+            <Label className={css.oppsummering}>{oppsummering}</Label>
             <Detail size="small" className={css.detaljer}>
                 {detaljer}
+            </Detail>
+            <Detail size="small" className={css.detaljer}>
+                {forklaring}
             </Detail>
         </div>
     );

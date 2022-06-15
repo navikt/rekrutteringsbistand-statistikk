@@ -85,7 +85,7 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
                 />
             </div>
             <Panel border={true}>
-                <Heading spacing level="2" size="large">
+                <Heading level="2" size="small">
                     Stillinger delt med kandidater i Aktivitetsplanen
                 </Heading>
                 <div className={css.delingstatistikk}>
@@ -93,24 +93,26 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
                         svartellingIkon={SvartellingIkon.Delt}
                         oppsummering={svarTotalt + ''}
                         detaljer="stillinger har blitt delt med kandidater i Aktivitetsplanen"
+                        forklaring=""
                     ></Svartelling>
                     <Svartelling
                         svartellingIkon={SvartellingIkon.Ja}
                         oppsummering={finnProsent(svarteJa) + ' svarte ja'}
                         detaljer={`til at CV-en kan deles med arbeidsgiver
-                        (${svarteJa} av ${svarTotalt})`}
+                        `}
+                        forklaring={`(${svarteJa} av ${svarTotalt})`}
                     ></Svartelling>
                     <Svartelling
                         svartellingIkon={SvartellingIkon.Nei}
                         oppsummering={finnProsent(svarteNei) + ' svarte nei'}
-                        detaljer={`til at CV-en kan deles med arbeidsgiver
-                        (${svarteNei} av ${svarTotalt})`}
+                        detaljer={`til at CV-en kan deles med arbeidsgiver`}
+                        forklaring={`(${svarteNei} av ${svarTotalt})`}
                     ></Svartelling>
                     <Svartelling
                         svartellingIkon={SvartellingIkon.SvarteIkke}
                         oppsummering={finnProsent(svarteIkke) + ' svarte ikke'}
-                        detaljer={`på om CV-en kan deles med arbeidsgiver
-                        (${svarteIkke} av ${svarTotalt})`}
+                        detaljer={`på om CV-en kan deles med arbeidsgiver`}
+                        forklaring={`(${svarteIkke} av ${svarTotalt})`}
                     ></Svartelling>
                 </div>
             </Panel>
