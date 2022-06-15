@@ -1,21 +1,65 @@
 import { Heading, Panel } from '@navikt/ds-react';
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import Svartelling, { SvartellingIkon } from './Svartelling';
 import css from './Foresporsler.module.css';
+import { formaterDatoTilApi } from '../datoUtils';
 
 type Props = {
     navKontor: string;
+    fraOgMed: Date;
+    tilOgMed: Date;
 };
 
-const Forespørsler: FunctionComponent<Props> = ({ navKontor }) => {
-    const svarTotalt: number = 120;
-    const svarteJa: number = 22;
-    const svarteNei: number = 30;
-    const svarteIkke: number = 40;
+type AntallForesporslerInboundDto = {
+    antallSvartJa: number;
+    antallSvartNei: number;
+    antallUbesvart: number;
+};
+
+const apiBasePath = '/foresporsel-om-deling-av-cv-api';
+export const foresporslerApiUrl = `${apiBasePath}/statistikk`;
+
+const Forespørsler: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilOgMed }) => {
+    /*const svarTotaltTestdata: number = 120;
+    const svarteJaTestdata: number = 22;
+    const svarteNeiTestdata: number = 30;
+    const svarteIkkeTestData: number = 40;*/
+
+    const [antallSvartJa, setAntallSvartJa] = useState<number>(0);
+    const [antallSvartNei, setAntallSvartNei] = useState<number>(0);
+    const [antallUbesvart, setAntallUbesvart] = useState<number>(0);
+
+    useEffect(() => {
+        const url =
+            `${foresporslerApiUrl}?` +
+            new URLSearchParams({
+                fraOgMed: formaterDatoTilApi(fraOgMed),
+                tilOgMed: formaterDatoTilApi(tilOgMed),
+                navKontor,
+            });
+
+        const hentData = async () => {
+            const respons = await fetch(url, {
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'same-origin',
+            });
+
+            if (respons.ok) {
+                const forespørsler: AntallForesporslerInboundDto = await respons.json();
+
+                setAntallSvartJa(forespørsler.antallSvartJa);
+                setAntallSvartNei(forespørsler.antallSvartNei);
+                setAntallUbesvart(forespørsler.antallUbesvart);
+            }
+        };
+        hentData();
+    }, [navKontor, fraOgMed, tilOgMed]);
 
     const finnProsent = (tall: number) => {
-        return Math.round((tall / svarTotalt) * 100) + '%';
+        return Math.round((tall / antallTotalt) * 100) + '%';
     };
+
+    const antallTotalt = antallSvartJa + antallSvartNei + antallUbesvart;
 
     return (
         <Panel border={true}>
@@ -25,28 +69,28 @@ const Forespørsler: FunctionComponent<Props> = ({ navKontor }) => {
             <div className={css.delingstatistikk}>
                 <Svartelling
                     svartellingIkon={SvartellingIkon.Delt}
-                    oppsummering={svarTotalt + ''}
+                    oppsummering={antallTotalt + ''}
                     detaljer="stillinger har blitt delt med kandidater i Aktivitetsplanen"
                     forklaring=""
                 ></Svartelling>
                 <Svartelling
                     svartellingIkon={SvartellingIkon.Ja}
-                    oppsummering={finnProsent(svarteJa) + ' svarte ja'}
+                    oppsummering={finnProsent(antallSvartJa) + ' svarte ja'}
                     detaljer={`til at CV-en kan deles med arbeidsgiver
             `}
-                    forklaring={`(${svarteJa} av ${svarTotalt})`}
+                    forklaring={`(${antallSvartJa} av ${antallTotalt})`}
                 ></Svartelling>
                 <Svartelling
                     svartellingIkon={SvartellingIkon.Nei}
-                    oppsummering={finnProsent(svarteNei) + ' svarte nei'}
+                    oppsummering={finnProsent(antallSvartNei) + ' svarte nei'}
                     detaljer={`til at CV-en kan deles med arbeidsgiver`}
-                    forklaring={`(${svarteNei} av ${svarTotalt})`}
+                    forklaring={`(${antallSvartNei} av ${antallTotalt})`}
                 ></Svartelling>
                 <Svartelling
                     svartellingIkon={SvartellingIkon.SvarteIkke}
-                    oppsummering={finnProsent(svarteIkke) + ' svarte ikke'}
+                    oppsummering={finnProsent(antallUbesvart) + ' svarte ikke'}
                     detaljer={`på om CV-en kan deles med arbeidsgiver`}
-                    forklaring={`(${svarteIkke} av ${svarTotalt})`}
+                    forklaring={`(${antallUbesvart} av ${antallTotalt})`}
                 ></Svartelling>
             </div>
         </Panel>
