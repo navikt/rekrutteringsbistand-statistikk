@@ -15,12 +15,6 @@
     gap: 2rem;
 }
 
-.delingstatistikk {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
 @media (min-width: 500px) {
     .delingstatistikk {
         display: grid;
