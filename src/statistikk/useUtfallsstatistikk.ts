@@ -10,7 +10,7 @@ type AntallFormidlingerInboundDto = {
     antallFåttJobben: number;
 };
 
-const useStatistikk = (navKontor: string, fraOgMed: Date, tilOgMed: Date) => {
+const useUtfallsstatistikk = (navKontor: string, fraOgMed: Date, tilOgMed: Date) => {
     const [antallPresentert, setAntallPresentert] = useState<number>(0);
     const [antallFåttJobben, setAntallFåttJobben] = useState<number>(0);
 
@@ -42,4 +42,4 @@ const useStatistikk = (navKontor: string, fraOgMed: Date, tilOgMed: Date) => {
     return [antallPresentert, antallFåttJobben];
 };
 
-export default useStatistikk;
+export default useUtfallsstatistikk;

@@ -1,3 +1,7 @@
+.forespørsler {
+    margin-top: 1.5rem;
+}
+
 @media (min-width: 500px) {
     .delingstatistikk {
         display: grid;
