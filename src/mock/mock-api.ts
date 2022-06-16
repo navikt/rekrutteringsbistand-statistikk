@@ -1,5 +1,5 @@
 import fetchMock from 'fetch-mock';
-import { forespørslerApiUrl } from '../statistikk/Forespørsler';
+import { forespørslerApiUrl } from '../statistikk/useForespørsler';
 import { statistikkApiUrl } from '../statistikk/useUtfallsstatistikk';
 import { hentAntallFormidlinger, hentForespørslerstatistikk } from './testdata';
 

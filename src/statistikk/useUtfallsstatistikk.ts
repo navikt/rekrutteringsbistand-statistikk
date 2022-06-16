@@ -39,7 +39,7 @@ const useUtfallsstatistikk = (navKontor: string, fraOgMed: Date, tilOgMed: Date)
         hentData();
     }, [navKontor, fraOgMed, tilOgMed]);
 
-    return [antallPresentert, antallFåttJobben];
+    return { antallPresentert, antallFåttJobben };
 };
 
 export default useUtfallsstatistikk;

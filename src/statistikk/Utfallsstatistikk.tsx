@@ -11,7 +11,7 @@ type Props = {
 };
 
 const Utfallsstatistikk: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilOgMed }) => {
-    const [antallPresentert, antallFåttJobben] = useUtfallsstatistikk(
+    const { antallPresentert, antallFåttJobben } = useUtfallsstatistikk(
         navKontor,
         fraOgMed,
         tilOgMed

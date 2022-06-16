@@ -1,8 +1,8 @@
 import { Heading, Panel } from '@navikt/ds-react';
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent } from 'react';
 import Svartelling, { SvartellingIkon } from './Svartelling';
 import css from './Forespørsler.module.css';
-import { formaterDatoTilApi } from '../datoUtils';
+import useForespørsler from './useForespørsler';
 
 type Props = {
     navKontor: string;
@@ -10,45 +10,12 @@ type Props = {
     tilOgMed: Date;
 };
 
-type AntallForespørslerInboundDto = {
-    antallSvartJa: number;
-    antallSvartNei: number;
-    antallUbesvart: number;
-};
-
-const apiBasePath = '/foresporsel-om-deling-av-cv-api';
-export const forespørslerApiUrl = `${apiBasePath}/statistikk`;
-
 const Forespørsler: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilOgMed }) => {
-    const [antallSvartJa, setAntallSvartJa] = useState<number>(0);
-    const [antallSvartNei, setAntallSvartNei] = useState<number>(0);
-    const [antallUbesvart, setAntallUbesvart] = useState<number>(0);
-
-    useEffect(() => {
-        const url =
-            `${forespørslerApiUrl}?` +
-            new URLSearchParams({
-                fraOgMed: formaterDatoTilApi(fraOgMed),
-                tilOgMed: formaterDatoTilApi(tilOgMed),
-                navKontor,
-            });
-
-        const hentData = async () => {
-            const respons = await fetch(url, {
-                headers: { 'Content-Type': 'application/json' },
-                credentials: 'same-origin',
-            });
-
-            if (respons.ok) {
-                const forespørsler: AntallForespørslerInboundDto = await respons.json();
-
-                setAntallSvartJa(forespørsler.antallSvartJa);
-                setAntallSvartNei(forespørsler.antallSvartNei);
-                setAntallUbesvart(forespørsler.antallUbesvart);
-            }
-        };
-        hentData();
-    }, [navKontor, fraOgMed, tilOgMed]);
+    const { antallUbesvart, antallSvartJa, antallSvartNei } = useForespørsler(
+        navKontor,
+        fraOgMed,
+        tilOgMed
+    );
 
     const finnProsent = (tall: number) => {
         return Math.round((tall / antallTotalt) * 100) + '%';
@@ -67,26 +34,25 @@ const Forespørsler: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilOgMed
                     oppsummering={antallTotalt + ''}
                     detaljer="stillinger har blitt delt med kandidater i Aktivitetsplanen"
                     forklaring=""
-                ></Svartelling>
+                />
                 <Svartelling
                     svartellingIkon={SvartellingIkon.Ja}
                     oppsummering={finnProsent(antallSvartJa) + ' svarte ja'}
-                    detaljer={`til at CV-en kan deles med arbeidsgiver
-            `}
+                    detaljer="til at CV-en kan deles med arbeidsgiver"
                     forklaring={`(${antallSvartJa} av ${antallTotalt})`}
-                ></Svartelling>
+                />
                 <Svartelling
                     svartellingIkon={SvartellingIkon.Nei}
                     oppsummering={finnProsent(antallSvartNei) + ' svarte nei'}
-                    detaljer={`til at CV-en kan deles med arbeidsgiver`}
+                    detaljer="til at CV-en kan deles med arbeidsgiver"
                     forklaring={`(${antallSvartNei} av ${antallTotalt})`}
-                ></Svartelling>
+                />
                 <Svartelling
                     svartellingIkon={SvartellingIkon.SvarteIkke}
                     oppsummering={finnProsent(antallUbesvart) + ' svarte ikke'}
-                    detaljer={`på om CV-en kan deles med arbeidsgiver`}
+                    detaljer="på om CV-en kan deles med arbeidsgiver"
                     forklaring={`(${antallUbesvart} av ${antallTotalt})`}
-                ></Svartelling>
+                />
             </div>
         </Panel>
     );
