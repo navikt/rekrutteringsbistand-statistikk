@@ -4,7 +4,7 @@ import { idag, trettiDagerSiden, formaterDatoTilApi, formaterDatoTilVisning } fr
 import Telling from './Telling';
 import css from './Statistikk.module.css';
 import tellingCss from './Telling.module.css';
-import Foresporsler from './Foresporsler';
+import Forespørsler from './Forespørsler';
 
 type Props = {
     navKontor: string;
@@ -75,11 +75,11 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
                     className={tellingCss.presentert}
                 />
             </div>
-            <Foresporsler
+            <Forespørsler
                 navKontor={navKontor}
                 fraOgMed={fraOgMed}
                 tilOgMed={tilOgMed}
-            ></Foresporsler>
+            ></Forespørsler>
         </div>
     );
 };

@@ -1,7 +1,7 @@
 import { Heading, Panel } from '@navikt/ds-react';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import Svartelling, { SvartellingIkon } from './Svartelling';
-import css from './Foresporsler.module.css';
+import css from './Forespørsler.module.css';
 import { formaterDatoTilApi } from '../datoUtils';
 
 type Props = {
@@ -10,14 +10,14 @@ type Props = {
     tilOgMed: Date;
 };
 
-type AntallForesporslerInboundDto = {
+type AntallForespørslerInboundDto = {
     antallSvartJa: number;
     antallSvartNei: number;
     antallUbesvart: number;
 };
 
 const apiBasePath = '/foresporsel-om-deling-av-cv-api';
-export const foresporslerApiUrl = `${apiBasePath}/statistikk`;
+export const forespørslerApiUrl = `${apiBasePath}/statistikk`;
 
 const Forespørsler: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilOgMed }) => {
     const [antallSvartJa, setAntallSvartJa] = useState<number>(0);
@@ -26,7 +26,7 @@ const Forespørsler: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilOgMed
 
     useEffect(() => {
         const url =
-            `${foresporslerApiUrl}?` +
+            `${forespørslerApiUrl}?` +
             new URLSearchParams({
                 fraOgMed: formaterDatoTilApi(fraOgMed),
                 tilOgMed: formaterDatoTilApi(tilOgMed),
@@ -40,7 +40,7 @@ const Forespørsler: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilOgMed
             });
 
             if (respons.ok) {
-                const forespørsler: AntallForesporslerInboundDto = await respons.json();
+                const forespørsler: AntallForespørslerInboundDto = await respons.json();
 
                 setAntallSvartJa(forespørsler.antallSvartJa);
                 setAntallSvartNei(forespørsler.antallSvartNei);
