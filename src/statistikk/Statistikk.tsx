@@ -4,6 +4,7 @@ import { idag, trettiDagerSiden, formaterDatoTilVisning } from '../datoUtils';
 import Forespørsler from './Forespørsler';
 import Utfallsstatistikk from './Utfallsstatistikk';
 import css from './Statistikk.module.css';
+import { erIkkeProd } from '../featureToggle';
 
 type Props = {
     navKontor: string;
@@ -22,9 +23,10 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
                 <time dateTime={fraOgMed.toISOString()}>{formaterDatoTilVisning(fraOgMed)}</time> -{' '}
                 <time dateTime={tilOgMed.toISOString()}>{formaterDatoTilVisning(tilOgMed)}</time>
             </p>
-
             <Utfallsstatistikk navKontor={navKontor} fraOgMed={fraOgMed} tilOgMed={tilOgMed} />
-            <Forespørsler navKontor={navKontor} fraOgMed={fraOgMed} tilOgMed={tilOgMed} />
+            {erIkkeProd && (
+                <Forespørsler navKontor={navKontor} fraOgMed={fraOgMed} tilOgMed={tilOgMed} />
+            )}
         </div>
     );
 };
