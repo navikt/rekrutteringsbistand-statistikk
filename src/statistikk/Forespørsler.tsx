@@ -1,8 +1,8 @@
 import { Heading, Panel } from '@navikt/ds-react';
 import React, { FunctionComponent } from 'react';
 import Svartelling, { SvartellingIkon } from './Svartelling';
+import useSvarstatistikk from './useSvarstatistikk';
 import css from './Forespørsler.module.css';
-import useForespørsler from './useForespørsler';
 
 type Props = {
     navKontor: string;
@@ -11,17 +11,19 @@ type Props = {
 };
 
 const Forespørsler: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilOgMed }) => {
-    const { antallUbesvart, antallSvartJa, antallSvartNei } = useForespørsler(
-        navKontor,
-        fraOgMed,
-        tilOgMed
-    );
+    const svarstatistikk = useSvarstatistikk(navKontor, fraOgMed, tilOgMed);
+
+    if (svarstatistikk === undefined) {
+        return null;
+    }
+
+    const { antallSvartJa, antallSvartNei, antallUtløpteSvar, antallVenterPåSvar } = svarstatistikk;
+
+    const antallTotalt = antallSvartJa + antallSvartNei + antallVenterPåSvar + antallUtløpteSvar;
 
     const finnProsent = (tall: number) => {
         return Math.round((tall / antallTotalt) * 100) + '%';
     };
-
-    const antallTotalt = antallSvartJa + antallSvartNei + antallUbesvart;
 
     return (
         <Panel className={css.forespørsler}>
@@ -49,9 +51,9 @@ const Forespørsler: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilOgMed
                 />
                 <Svartelling
                     svartellingIkon={SvartellingIkon.SvarteIkke}
-                    oppsummering={finnProsent(antallUbesvart) + ' svarte ikke'}
+                    oppsummering={finnProsent(antallUtløpteSvar) + ' svarte ikke'}
                     detaljer="på om CV-en kan deles med arbeidsgiver"
-                    forklaring={`(${antallUbesvart} av ${antallTotalt})`}
+                    forklaring={`(${antallUtløpteSvar} av ${antallTotalt})`}
                 />
             </div>
         </Panel>

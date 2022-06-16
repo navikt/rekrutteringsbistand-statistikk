@@ -1,5 +1,5 @@
 import fetchMock from 'fetch-mock';
-import { forespørslerApiUrl } from '../statistikk/useForespørsler';
+import { forespørslerApiUrl, Svarstatistikk } from '../statistikk/useSvarstatistikk';
 import { statistikkApiUrl } from '../statistikk/useUtfallsstatistikk';
 import { hentAntallFormidlinger, hentForespørslerstatistikk } from './testdata';
 
@@ -12,7 +12,7 @@ fetchMock.get(`begin:${statistikkApiUrl}`, (url) => {
     return hentAntallFormidlinger(navKontor || '0000');
 });
 
-fetchMock.get(`begin:${forespørslerApiUrl}`, (url) => {
+fetchMock.get(`begin:${forespørslerApiUrl}`, (url): Svarstatistikk => {
     const searchQuery = url.split('?').pop();
     const navKontor = new URLSearchParams(searchQuery).get('navKontor');
 

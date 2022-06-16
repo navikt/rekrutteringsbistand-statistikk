@@ -4,16 +4,15 @@ import { formaterDatoTilApi } from '../datoUtils';
 const apiBasePath = '/foresporsel-om-deling-av-cv-api';
 export const forespørslerApiUrl = `${apiBasePath}/statistikk`;
 
-type AntallForespørslerInboundDto = {
+export type Svarstatistikk = {
     antallSvartJa: number;
     antallSvartNei: number;
-    antallUbesvart: number;
+    antallVenterPåSvar: number;
+    antallUtløpteSvar: number;
 };
 
-const useForespørsler = (navKontor: string, fraOgMed: Date, tilOgMed: Date) => {
-    const [antallSvartJa, setAntallSvartJa] = useState<number>(0);
-    const [antallSvartNei, setAntallSvartNei] = useState<number>(0);
-    const [antallUbesvart, setAntallUbesvart] = useState<number>(0);
+const useSvarstatistikk = (navKontor: string, fraOgMed: Date, tilOgMed: Date) => {
+    const [svarstatistikk, setSvarstatistikk] = useState<Svarstatistikk | undefined>(undefined);
 
     useEffect(() => {
         const url =
@@ -31,21 +30,14 @@ const useForespørsler = (navKontor: string, fraOgMed: Date, tilOgMed: Date) => 
             });
 
             if (respons.ok) {
-                const forespørsler: AntallForespørslerInboundDto = await respons.json();
-
-                setAntallSvartJa(forespørsler.antallSvartJa);
-                setAntallSvartNei(forespørsler.antallSvartNei);
-                setAntallUbesvart(forespørsler.antallUbesvart);
+                const svarstatistikk: Svarstatistikk = await respons.json();
+                setSvarstatistikk(svarstatistikk);
             }
         };
         hentData();
     }, [navKontor, fraOgMed, tilOgMed]);
 
-    return {
-        antallSvartJa,
-        antallSvartNei,
-        antallUbesvart,
-    };
+    return svarstatistikk;
 };
 
-export default useForespørsler;
+export default useSvarstatistikk;

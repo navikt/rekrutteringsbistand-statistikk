@@ -1,3 +1,5 @@
+import { Svarstatistikk } from '../statistikk/useSvarstatistikk';
+
 export const hentAntallFormidlinger = (navKontor: string) => {
     return navKontor === '0239'
         ? {
@@ -10,16 +12,18 @@ export const hentAntallFormidlinger = (navKontor: string) => {
           };
 };
 
-export const hentForespørslerstatistikk = (navKontor: string) => {
+export const hentForespørslerstatistikk = (navKontor: string): Svarstatistikk => {
     return navKontor === '0239'
         ? {
               antallSvartJa: 26,
               antallSvartNei: 108,
-              antallUbesvart: 22,
+              antallUtløpteSvar: 22,
+              antallVenterPåSvar: 0,
           }
         : {
               antallSvartJa: 13,
               antallSvartNei: 78,
-              antallUbesvart: 100,
+              antallUtløpteSvar: 100,
+              antallVenterPåSvar: 0,
           };
 };
