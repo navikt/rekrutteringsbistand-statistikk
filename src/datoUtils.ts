@@ -1,4 +1,4 @@
-export const trettiDagerSiden = () => {
+export const trettiDagerSiden = (): Date => {
     const dato = new Date();
 
     const minusTrettiDager = dato.getDate() - 30;

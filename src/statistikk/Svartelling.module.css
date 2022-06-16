@@ -1,0 +1,18 @@
+.svartelling {
+    margin: 1.5rem;
+    text-align: left;
+}
+
+.svartJa {
+    color: green;
+}
+
+.svartNei {
+    color: red;
+    position: relative;
+}
+
+.xSign {
+    color: red;
+    position: absolute;
+}

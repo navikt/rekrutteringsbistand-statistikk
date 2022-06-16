@@ -1,38 +1,59 @@
 import React, { FunctionComponent } from 'react';
 import { Dialog, DialogSuccess, SpeechBubble } from '@navikt/ds-icons';
+import css from './Svartelling.module.css';
+import { Detail, Label } from '@navikt/ds-react';
+import { ReactComponent as Kryssikon } from './kryss.svg';
 
 export enum SvartellingIkon {
     Delt,
     Ja,
     Nei,
-    Ubesvart,
+    SvarteIkke,
 }
 
 type Props = {
     svartellingIkon: SvartellingIkon;
-    antall: number;
-    tellingtekst: string;
+    oppsummering: string;
+    detaljer: string;
+    forklaring: string;
 };
 
-const Svartelling: FunctionComponent<Props> = ({ svartellingIkon, antall, tellingtekst }) => {
+const Svartelling: FunctionComponent<Props> = ({
+    svartellingIkon,
+    oppsummering,
+    detaljer,
+    forklaring,
+}) => {
     const ikon = (valgtIkon: SvartellingIkon) => {
         switch (valgtIkon) {
             case SvartellingIkon.Delt:
-                return <Dialog></Dialog>;
+                return <Dialog className={css.antallStillinger}></Dialog>;
             case SvartellingIkon.Ja:
-                return <DialogSuccess></DialogSuccess>;
+                return <DialogSuccess className={css.svartJa}></DialogSuccess>;
             case SvartellingIkon.Nei:
-                return <SpeechBubble></SpeechBubble>;
-            case SvartellingIkon.Ubesvart:
-                return <SpeechBubble></SpeechBubble>;
+                return (
+                    <>
+                        <span className={css.xSign}>
+                            <Kryssikon />
+                        </span>
+                        <SpeechBubble className={css.svartNei}></SpeechBubble>
+                    </>
+                );
+            case SvartellingIkon.SvarteIkke:
+                return <SpeechBubble className={css.ubesvart}></SpeechBubble>;
         }
     };
 
     return (
-        <div>
+        <div className={css.svartelling}>
             {ikon(svartellingIkon)}
-            <div>{antall}</div>
-            <div>{tellingtekst}</div>
+            <Label className={css.oppsummering}>{oppsummering}</Label>
+            <Detail size="small" className={css.detaljer}>
+                {detaljer}
+            </Detail>
+            <Detail size="small" className={css.detaljer}>
+                {forklaring}
+            </Detail>
         </div>
     );
 };
