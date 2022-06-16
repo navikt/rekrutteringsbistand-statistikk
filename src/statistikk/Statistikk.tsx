@@ -75,11 +75,7 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
                     className={tellingCss.presentert}
                 />
             </div>
-            <Forespørsler
-                navKontor={navKontor}
-                fraOgMed={fraOgMed}
-                tilOgMed={tilOgMed}
-            ></Forespørsler>
+            <Forespørsler navKontor={navKontor} fraOgMed={fraOgMed} tilOgMed={tilOgMed} />
         </div>
     );
 };
