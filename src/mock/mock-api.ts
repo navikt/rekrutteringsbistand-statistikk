@@ -1,6 +1,6 @@
 import fetchMock from 'fetch-mock';
 import { forespørslerApiUrl } from '../statistikk/Forespørsler';
-import { statistikkApiUrl } from '../statistikk/Statistikk';
+import { statistikkApiUrl } from '../statistikk/useStatistikk';
 import { hentAntallFormidlinger, hentForespørslerstatistikk } from './testdata';
 
 fetchMock.config.fallbackToNetwork = true;
