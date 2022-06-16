@@ -2,9 +2,19 @@
     margin-top: 1.5rem;
 }
 
+.forespørsler:global(.navds-panel) {
+    border-radius: 0.25rem;
+    padding: 2rem;
+}
+
+.delingstatistikk {
+    display: grid;
+    grid-gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
 @media (min-width: 500px) {
     .delingstatistikk {
-        display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
 }

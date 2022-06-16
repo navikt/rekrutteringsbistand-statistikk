@@ -16,7 +16,7 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
 
     return (
         <div className={css.statistikk}>
-            <Heading level="1" size="medium">
+            <Heading level="1" size="medium" className={css.tittel}>
                 Ditt NAV-kontor
             </Heading>
             <p className={css.tidsperiode}>

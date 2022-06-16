@@ -24,7 +24,7 @@ const Forespørsler: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilOgMed
     const antallTotalt = antallSvartJa + antallSvartNei + antallUbesvart;
 
     return (
-        <Panel className={css.forespørsler} border={true}>
+        <Panel className={css.forespørsler}>
             <Heading level="2" size="small">
                 Stillinger delt med kandidater i Aktivitetsplanen
             </Heading>

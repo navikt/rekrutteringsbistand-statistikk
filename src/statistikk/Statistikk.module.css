@@ -1,6 +1,10 @@
 .statistikk {
-    text-align: center;
     width: 100%;
+}
+
+.tittel,
+.tidsperiode {
+    text-align: center;
 }
 
 .tidsperiode {

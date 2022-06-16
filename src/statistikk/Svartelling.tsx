@@ -27,13 +27,13 @@ const Svartelling: FunctionComponent<Props> = ({
     const ikon = (valgtIkon: SvartellingIkon) => {
         switch (valgtIkon) {
             case SvartellingIkon.Delt:
-                return <Dialog className={css.antallStillinger}></Dialog>;
+                return <Dialog scale="2" className={css.antallStillinger}></Dialog>;
             case SvartellingIkon.Ja:
                 return <DialogSuccess className={css.svartJa}></DialogSuccess>;
             case SvartellingIkon.Nei:
                 return (
                     <>
-                        <span className={css.xSign}>
+                        <span className={css.kryss}>
                             <Kryssikon />
                         </span>
                         <SpeechBubble className={css.svartNei}></SpeechBubble>
