@@ -15,18 +15,15 @@ const useUtfallsstatistikk = (navKontor: string, fraOgMed: Date, tilOgMed: Date)
     const [antallFåttJobben, setAntallFåttJobben] = useState<number>(0);
 
     useEffect(() => {
-        const url =
-            `${statistikkApiUrl}?` +
-            new URLSearchParams({
-                fraOgMed: formaterDatoTilApi(fraOgMed),
-                tilOgMed: formaterDatoTilApi(tilOgMed),
-                navKontor,
-            });
-
         const hentData = async () => {
-            const respons = await fetch(url, {
+            const respons = await fetch(statistikkApiUrl, {
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'same-origin',
+                body: JSON.stringify({
+                    fraOgMed: formaterDatoTilApi(fraOgMed),
+                    tilOgMed: formaterDatoTilApi(tilOgMed),
+                    navKontor: navKontor,
+                }),
             });
 
             if (respons.ok) {
