@@ -16,16 +16,8 @@ const useForespørsler = (navKontor: string, fraOgMed: Date, tilOgMed: Date) => 
     const [antallUbesvart, setAntallUbesvart] = useState<number>(0);
 
     useEffect(() => {
-        const url =
-            `${forespørslerApiUrl}` +
-            new URLSearchParams({
-                fraOgMed: formaterDatoTilApi(fraOgMed),
-                tilOgMed: formaterDatoTilApi(tilOgMed),
-                navKontor,
-            });
-
         const hentData = async () => {
-            const respons = await fetch(url, {
+            const respons = await fetch(forespørslerApiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
                 credentials: 'same-origin',
