@@ -16,7 +16,7 @@ const useUtfallsstatistikk = (navKontor: string, fraOgMed: Date, tilOgMed: Date)
 
     useEffect(() => {
         const url =
-            `${statistikkApiUrl}` +
+            `${statistikkApiUrl}?` +
             new URLSearchParams({
                 fraOgMed: formaterDatoTilApi(fraOgMed),
                 tilOgMed: formaterDatoTilApi(tilOgMed),
