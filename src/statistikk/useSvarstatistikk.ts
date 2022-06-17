@@ -15,18 +15,16 @@ const useSvarstatistikk = (navKontor: string, fraOgMed: Date, tilOgMed: Date) =>
     const [svarstatistikk, setSvarstatistikk] = useState<Svarstatistikk | undefined>(undefined);
 
     useEffect(() => {
-        const url =
-            `${forespørslerApiUrl}?` +
-            new URLSearchParams({
-                fraOgMed: formaterDatoTilApi(fraOgMed),
-                tilOgMed: formaterDatoTilApi(tilOgMed),
-                navKontor,
-            });
-
         const hentData = async () => {
-            const respons = await fetch(url, {
+            const respons = await fetch(forespørslerApiUrl, {
+                method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'same-origin',
+                body: JSON.stringify({
+                    fraOgMed: formaterDatoTilApi(fraOgMed),
+                    tilOgMed: formaterDatoTilApi(tilOgMed),
+                    navKontor: navKontor,
+                }),
             });
 
             if (respons.ok) {
