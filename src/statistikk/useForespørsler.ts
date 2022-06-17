@@ -27,8 +27,13 @@ const useForespørsler = (navKontor: string, fraOgMed: Date, tilOgMed: Date) => 
         const hentData = async () => {
             const respons = await fetch(url, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
                 credentials: 'same-origin',
+                body: JSON.stringify({
+                    fraOgMed: formaterDatoTilApi(fraOgMed),
+                    tilOgMed: formaterDatoTilApi(tilOgMed),
+                    navKontor: navKontor,
+                }),
             });
 
             if (respons.ok) {
