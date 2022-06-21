@@ -21,8 +21,13 @@ const Forespørsler: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilOgMed
 
     const antallTotalt = antallSvartJa + antallSvartNei + antallVenterPåSvar + antallUtløpteSvar;
 
-    const finnProsent = (tall: number) => {
-        return Math.round((tall / antallTotalt) * 100) + '%';
+    const formaterSomProsentAvTotalen = (tall: number) => {
+        if (tall > 0) {
+            const andelAvTotalen = tall / antallTotalt;
+            return Math.round(andelAvTotalen * 100) + '%';
+        } else {
+            return '0%';
+        }
     };
 
     return (
@@ -39,19 +44,19 @@ const Forespørsler: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilOgMed
                 />
                 <Svartelling
                     svartellingIkon={SvartellingIkon.Ja}
-                    oppsummering={finnProsent(antallSvartJa) + ' svarte ja'}
+                    oppsummering={formaterSomProsentAvTotalen(antallSvartJa) + ' svarte ja'}
                     detaljer="til at CV-en kan deles med arbeidsgiver"
                     forklaring={`(${antallSvartJa} av ${antallTotalt})`}
                 />
                 <Svartelling
                     svartellingIkon={SvartellingIkon.Nei}
-                    oppsummering={finnProsent(antallSvartNei) + ' svarte nei'}
+                    oppsummering={formaterSomProsentAvTotalen(antallSvartNei) + ' svarte nei'}
                     detaljer="til at CV-en kan deles med arbeidsgiver"
                     forklaring={`(${antallSvartNei} av ${antallTotalt})`}
                 />
                 <Svartelling
                     svartellingIkon={SvartellingIkon.SvarteIkke}
-                    oppsummering={finnProsent(antallUtløpteSvar) + ' svarte ikke'}
+                    oppsummering={formaterSomProsentAvTotalen(antallUtløpteSvar) + ' svarte ikke'}
                     detaljer="på om CV-en kan deles med arbeidsgiver"
                     forklaring={`(${antallUtløpteSvar} av ${antallTotalt})`}
                 />
