@@ -1,14 +1,3 @@
-export const trettiDagerSiden = (): Date => {
-    const dato = new Date();
-
-    const minusTrettiDager = dato.getDate() - 30;
-    dato.setDate(minusTrettiDager);
-
-    return dato;
-};
-
-export const idag = (): Date => new Date();
-
 export const førsteDagIInneværendeMåned = (): Date => {
     const dato = new Date();
     dato.setDate(1);

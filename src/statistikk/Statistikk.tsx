@@ -1,8 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Heading } from '@navikt/ds-react';
 import {
-    idag,
-    trettiDagerSiden,
     formaterDatoTilVisning,
     førsteDagIInneværendeMåned,
     sisteDagIInneværendeMåned,
@@ -17,8 +15,8 @@ type Props = {
 };
 
 const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
-    const fraOgMed = erIkkeProd ? førsteDagIInneværendeMåned() : trettiDagerSiden();
-    const tilOgMed = erIkkeProd ? sisteDagIInneværendeMåned() : idag();
+    const fraOgMed = førsteDagIInneværendeMåned();
+    const tilOgMed = sisteDagIInneværendeMåned();
 
     return (
         <div className={css.statistikk}>
