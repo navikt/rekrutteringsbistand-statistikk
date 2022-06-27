@@ -1,6 +1,12 @@
 import React, { FunctionComponent } from 'react';
 import { Heading } from '@navikt/ds-react';
-import { idag, trettiDagerSiden, formaterDatoTilVisning } from '../datoUtils';
+import {
+    idag,
+    trettiDagerSiden,
+    formaterDatoTilVisning,
+    førsteDagIInneværendeMåned,
+    sisteDagIInneværendeMåned,
+} from '../datoUtils';
 import Forespørsler from './Forespørsler';
 import Utfallsstatistikk from './Utfallsstatistikk';
 import css from './Statistikk.module.css';
@@ -11,8 +17,8 @@ type Props = {
 };
 
 const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
-    const fraOgMed = trettiDagerSiden();
-    const tilOgMed = idag();
+    const fraOgMed = erIkkeProd ? førsteDagIInneværendeMåned() : trettiDagerSiden();
+    const tilOgMed = erIkkeProd ? sisteDagIInneværendeMåned() : idag();
 
     return (
         <div className={css.statistikk}>
@@ -20,7 +26,9 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
                 Ditt NAV-kontor
             </Heading>
             <p className={css.tidsperiode}>
-                <time dateTime={fraOgMed.toISOString()}>{formaterDatoTilVisning(fraOgMed)}</time> -{' '}
+                <>Statistikk for perioden </>
+                <time dateTime={fraOgMed.toISOString()}>{formaterDatoTilVisning(fraOgMed)}</time>
+                <span> til </span>
                 <time dateTime={tilOgMed.toISOString()}>{formaterDatoTilVisning(tilOgMed)}</time>
             </p>
             <Utfallsstatistikk navKontor={navKontor} fraOgMed={fraOgMed} tilOgMed={tilOgMed} />
