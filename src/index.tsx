@@ -3,10 +3,10 @@ import Navspa from '@navikt/navspa';
 
 import App, { AppProps } from './App';
 import Utviklingsapp from './utviklingsapp/Utviklingsapp';
+import { createRoot } from 'react-dom/client';
 import '@navikt/ds-css';
 import './index.css';
-import Router from './Router';
-import { createRoot } from 'react-dom/client';
+import { Router } from 'react-router-dom';
 
 const skalEksporteres = process.env.REACT_APP_EXPORT || process.env.NODE_ENV === 'production';
 
@@ -15,7 +15,7 @@ if (process.env.REACT_APP_MOCK) {
 }
 
 const AppMedCssScope: FunctionComponent<AppProps> = (props: AppProps) => (
-    <Router history={props.history}>
+    <Router navigator={props.history} location={props.history.location}>
         <App {...props} />
     </Router>
 );
