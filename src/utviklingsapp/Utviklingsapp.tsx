@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { createBrowserHistory } from 'history';
+import { Router } from 'react-router-dom';
 import { Heading } from '@navikt/ds-react';
 import css from './Utviklingsapp.module.css';
 import App from '../App';
-import Router from '../Router';
+import { createBrowserHistory } from 'history';
 
 const history = createBrowserHistory();
 
@@ -21,7 +21,7 @@ const Utviklingsapp: FunctionComponent = () => {
     });
 
     return (
-        <Router history={history}>
+        <Router location={history.location} navigator={history}>
             <header>
                 <Heading level="1" size="medium" className={css.utviklingsapp}>
                     Utviklingsapp for rekrutteringsbistand-statistikk

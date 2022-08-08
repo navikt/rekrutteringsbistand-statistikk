@@ -3,7 +3,9 @@ import liste from './ikoner/liste.svg';
 import blyant from './ikoner/blyant.svg';
 import kvinne from './ikoner/kvinne.svg';
 import checkliste from './ikoner/checkliste.svg';
-import { Heading, LinkPanel } from '@navikt/ds-react';
+import { Heading } from '@navikt/ds-react';
+import { Link } from 'react-router-dom';
+import { Next } from '@navikt/ds-icons';
 import css from './Hurtiglenker.module.css';
 
 const Hurtiglenker: FunctionComponent = () => {
@@ -34,7 +36,10 @@ const LenkepanelMedIkon: FunctionComponent<{
     href: string;
     ikonSrc: string;
 }> = ({ tittel, href, ikonSrc }) => (
-    <LinkPanel href={href} className={css.lenkepanel}>
+    <Link
+        to={href}
+        className={`navds-panel navds-link-panel navds-panel--border ${css.lenkepanel}`}
+    >
         <div className={css.lenkeinnhold}>
             <div className={css.lenkeikon}>
                 <img src={ikonSrc} alt="" />
@@ -42,8 +47,9 @@ const LenkepanelMedIkon: FunctionComponent<{
             <Heading level="2" size="medium">
                 {tittel}
             </Heading>
+            <Next />
         </div>
-    </LinkPanel>
+    </Link>
 );
 
 export default Hurtiglenker;
