@@ -13,11 +13,12 @@ type Props = {
 const Forespørsler: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilOgMed }) => {
     const svarstatistikk = useSvarstatistikk(navKontor, fraOgMed, tilOgMed);
 
-    if (svarstatistikk === undefined) {
+    if (svarstatistikk.kind !== 'suksess') {
         return null;
     }
 
-    const { antallSvartJa, antallSvartNei, antallUtløpteSvar, antallVenterPåSvar } = svarstatistikk;
+    const { antallSvartJa, antallSvartNei, antallUtløpteSvar, antallVenterPåSvar } =
+        svarstatistikk.data;
 
     const antallTotalt = antallSvartJa + antallSvartNei + antallVenterPåSvar + antallUtløpteSvar;
 
