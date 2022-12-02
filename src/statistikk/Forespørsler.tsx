@@ -40,7 +40,7 @@ const Forespørsler: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilOgMed
                 <Svartelling
                     svartellingIkon={SvartellingIkon.Delt}
                     oppsummering={antallTotalt + ''}
-                    detaljer="stillinger har blitt delt med kandidater i Aktivitetsplanen"
+                    detaljer="ganger har en stilling blitt delt med en kandidat i Aktivitetsplanen"
                     forklaring=""
                 />
                 <Svartelling
