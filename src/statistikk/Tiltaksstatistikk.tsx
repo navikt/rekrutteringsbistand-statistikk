@@ -11,7 +11,7 @@ type Props = {
 };
 
 const Tiltaksstatistikk: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilOgMed }) => {
-    const {} = useUtfallsstatistikk(navKontor, fraOgMed, tilOgMed);
+    // useUtfallsstatistikk(navKontor, fraOgMed, tilOgMed);
 
     return (
         <div className={tiltaksstatistikkCss.tiltaksstatistikk}>

@@ -5,10 +5,24 @@ export const hentAntallFormidlinger = (navKontor: string) => {
         ? {
               antallFåttJobben: 26,
               antallPresentert: 108,
+              tiltakstatistikk: {
+                  antallFåttJobben: 26,
+                  antallFåttJobbenArbeidstrening: 5,
+                  antallFåttJobbenLønnstilskudd: 6,
+                  antallFåttJobbenMentorordning: 7,
+                  antallFåttJobbenAndreTiltak: 8,
+              },
           }
         : {
               antallFåttJobben: 13,
               antallPresentert: 78,
+              tiltakstatistikk: {
+                  antallFåttJobben: 22,
+                  antallFåttJobbenArbeidstrening: 4,
+                  antallFåttJobbenLønnstilskudd: 5,
+                  antallFåttJobbenMentorordning: 6,
+                  antallFåttJobbenAndreTiltak: 7,
+              },
           };
 };
 
