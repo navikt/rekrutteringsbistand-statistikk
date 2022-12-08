@@ -7,6 +7,7 @@ import {
 } from '../datoUtils';
 import Forespørsler from './Forespørsler';
 import Utfallsstatistikk from './Utfallsstatistikk';
+import Tiltaksstatistikk from './Tiltaksstatistikk';
 import css from './Statistikk.module.css';
 
 type Props = {
@@ -30,6 +31,7 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
             </p>
             <Utfallsstatistikk navKontor={navKontor} fraOgMed={fraOgMed} tilOgMed={tilOgMed} />
             <Forespørsler navKontor={navKontor} fraOgMed={fraOgMed} tilOgMed={tilOgMed} />
+            <Tiltaksstatistikk navKontor={navKontor} fraOgMed={fraOgMed} tilOgMed={tilOgMed} />
         </div>
     );
 };
