@@ -1,0 +1,13 @@
+.tiltaksstatistikk {
+    margin: 3rem 0 3rem;
+    padding: 2rem;
+    border-radius: 0.25rem;
+    background-color: var(--navds-global-color-green-100);
+}
+
+.tiltaksstatistikkkategori {
+    text-align: left;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
