@@ -11,7 +11,7 @@ type AntallFormidlingerInboundDto = {
     tiltakstatistikk: TiltakStatistikkInboundDto;
 };
 
-type TiltakStatistikkInboundDto = {
+export type TiltakStatistikkInboundDto = {
     antallFåttJobben: number;
     antallFåttJobbenArbeidstrening: number;
     antallFåttJobbenLønnstilskudd: number;
@@ -62,7 +62,7 @@ const useUtfallsstatistikk = (navKontor: string, fraOgMed: Date, tilOgMed: Date)
         hentData();
     }, [navKontor, fraOgMed, tilOgMed]);
 
-    return { antallPresentert, antallFåttJobben };
+    return { antallPresentert, antallFåttJobben, tiltakstatistikk };
 };
 
 export default useUtfallsstatistikk;
