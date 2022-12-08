@@ -15,7 +15,7 @@ const Tiltaksstatistikk: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilO
 
     return (
         <div className={tiltaksstatistikkCss.tiltaksstatistikk}>
-            <Heading level="1" size="medium">
+            <Heading level="1" size="medium" className={tiltaksstatistikkCss.tittel}>
                 Tiltak og virkemidler som har ført til at folk har fått jobb
             </Heading>
             <div className={tiltaksstatistikkCss.tiltaksstatistikkkategori}>

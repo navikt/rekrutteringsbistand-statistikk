@@ -1,3 +1,7 @@
+.tittel {
+    margin-bottom: 2rem;
+}
+
 .tiltaksstatistikk {
     margin: 3rem 0 3rem;
     padding: 2rem;
@@ -10,4 +14,11 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
+}
+
+.prosent {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
 }
