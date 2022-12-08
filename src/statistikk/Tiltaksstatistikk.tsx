@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Heading } from '@navikt/ds-react';
 import useUtfallsstatistikk from './useUtfallsstatistikk';
-import statistikkCss from './Statistikk.module.css';
 import tiltaksstatistikkCss from './Tiltaksstatistikk.module.css';
 import TiltaksstatistikkKategori from './TiltaksstatistikkKategori';
 
