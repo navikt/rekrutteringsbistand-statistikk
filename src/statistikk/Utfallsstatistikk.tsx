@@ -40,7 +40,12 @@ const Utfallsstatistikk: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilO
                     className={tellingCss.presentert}
                 />
             </div>
-            {tiltakstatistikk && <Tiltaksstatistikk tiltakstatistikk={tiltakstatistikk} />}
+            {tiltakstatistikk && (
+                <Tiltaksstatistikk
+                    tiltakstatistikk={tiltakstatistikk}
+                    antallFåttJobben={antallFåttJobben}
+                />
+            )}
         </div>
     );
 };

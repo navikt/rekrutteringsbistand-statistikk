@@ -26,10 +26,6 @@ const TiltaksstatistikkKategori: FunctionComponent<Props> = ({
                     ({antallTiltak} av {antallTotal})
                 </Detail>
             </p>
-            <p>
-                <Detail>Viken: 50% (25 av 50)</Detail>
-                <Detail>Hele Landet: 40% (120 av 329)</Detail>
-            </p>
         </div>
     );
 };

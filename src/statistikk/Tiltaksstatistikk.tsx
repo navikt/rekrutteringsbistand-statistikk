@@ -6,9 +6,11 @@ import TiltaksstatistikkKategori from './TiltaksstatistikkKategori';
 
 type Props = {
     tiltakstatistikk: TiltakStatistikkInboundDto;
+    antallFåttJobben: number;
 };
 
-const Tiltaksstatistikk: FunctionComponent<Props> = ({ tiltakstatistikk }) => {
+const Tiltaksstatistikk: FunctionComponent<Props> = ({ tiltakstatistikk, antallFåttJobben }) => {
+    const totaltAntall = tiltakstatistikk.antallFåttJobben + antallFåttJobben;
     return (
         <div className={tiltaksstatistikkCss.tiltaksstatistikk}>
             <Heading level="1" size="medium" className={tiltaksstatistikkCss.tittel}>
@@ -17,22 +19,22 @@ const Tiltaksstatistikk: FunctionComponent<Props> = ({ tiltakstatistikk }) => {
             <div className={tiltaksstatistikkCss.tiltaksstatistikkkategori}>
                 <TiltaksstatistikkKategori
                     kategorinavn="Arbeidstrening"
-                    antallTotal={tiltakstatistikk.antallFåttJobben}
+                    antallTotal={totaltAntall}
                     antallTiltak={tiltakstatistikk.antallFåttJobbenArbeidstrening}
                 ></TiltaksstatistikkKategori>
                 <TiltaksstatistikkKategori
                     kategorinavn="Lønnstilskudd"
-                    antallTotal={tiltakstatistikk.antallFåttJobben}
+                    antallTotal={totaltAntall}
                     antallTiltak={tiltakstatistikk.antallFåttJobbenLønnstilskudd}
                 ></TiltaksstatistikkKategori>
                 <TiltaksstatistikkKategori
                     kategorinavn="Mentorordning"
-                    antallTotal={tiltakstatistikk.antallFåttJobben}
+                    antallTotal={totaltAntall}
                     antallTiltak={tiltakstatistikk.antallFåttJobbenMentorordning}
                 ></TiltaksstatistikkKategori>
                 <TiltaksstatistikkKategori
                     kategorinavn="Andre tiltak og virkemidler"
-                    antallTotal={tiltakstatistikk.antallFåttJobben}
+                    antallTotal={totaltAntall}
                     antallTiltak={tiltakstatistikk.antallFåttJobbenAndreTiltak}
                 ></TiltaksstatistikkKategori>
             </div>
