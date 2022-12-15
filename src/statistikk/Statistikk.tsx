@@ -7,7 +7,6 @@ import {
 } from '../datoUtils';
 import Forespørsler from './Forespørsler';
 import Utfallsstatistikk from './Utfallsstatistikk';
-import Tiltaksstatistikk from './Tiltaksstatistikk';
 import css from './Statistikk.module.css';
 
 type Props = {
