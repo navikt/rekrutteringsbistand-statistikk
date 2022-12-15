@@ -1,9 +1,5 @@
-.tittel {
-    margin-bottom: 2rem;
-}
-
 .tiltaksstatistikk {
-    margin: 3rem 0 3rem;
+    margin: 2rem 0 3rem;
     padding: 2rem;
     border-radius: 0.25rem;
     background-color: var(--navds-global-color-green-100);
@@ -16,9 +12,13 @@
     gap: 1rem;
 }
 
-.prosent {
+.kategoridetaljer {
+    margin: 0.5rem 0 0 0;
+}
+
+.kategoriprosent {
     font-size: 2.5rem;
     font-weight: bold;
-    margin-top: 0;
+    margin-top: 1rem;
     margin-bottom: 0;
 }

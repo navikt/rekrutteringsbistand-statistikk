@@ -16,8 +16,10 @@ const TiltaksstatistikkKategori: FunctionComponent<Props> = ({
 }) => {
     return (
         <div>
-            <p className={css.prosent}>{formaterSomProsentAvTotalen(antallTiltak, antallTotal)}</p>
-            <p>
+            <p className={css.kategoriprosent}>
+                {formaterSomProsentAvTotalen(antallTiltak, antallTotal)}
+            </p>
+            <p className={css.kategoridetaljer}>
                 <Label>{kategorinavn}</Label>
                 <Detail>
                     ({antallTiltak} av {antallTotal})
