@@ -13,7 +13,7 @@ const Telling: FunctionComponent<Props> = ({ tall, beskrivelse, className }) => 
 
     return (
         <p className={klassenavn}>
-            <div className={css.tall}>{tall}</div>
+            <span className={css.tall}>{tall}</span>
             {beskrivelse}
         </p>
     );
