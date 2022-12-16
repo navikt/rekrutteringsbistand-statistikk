@@ -5,6 +5,8 @@
 .tittel,
 .tidsperiode {
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .tidsperiode {
