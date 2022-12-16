@@ -8,7 +8,7 @@
 .tiltaksstatistikkkategori {
     text-align: left;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
 }
 
@@ -21,4 +21,10 @@
     font-weight: bold;
     margin-top: 1rem;
     margin-bottom: 0;
+}
+
+@media (min-width: 1000px) {
+    .tiltaksstatistikkkategori {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
