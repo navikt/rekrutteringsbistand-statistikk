@@ -13,7 +13,7 @@ const Tiltaksstatistikk: FunctionComponent<Props> = ({ tiltakstatistikk, antallF
     const totaltAntall = tiltakstatistikk.antallFåttJobben + antallFåttJobben;
     return (
         <div className={tiltaksstatistikkCss.tiltaksstatistikk}>
-            <Heading level="1" size="medium">
+            <Heading level="2" size="medium">
                 Tiltak og virkemidler som har ført til at folk har fått jobb
             </Heading>
             <div className={tiltaksstatistikkCss.tiltaksstatistikkkategori}>
