@@ -4,6 +4,7 @@ import useUtfallsstatistikk from './useUtfallsstatistikk';
 import statistikkCss from './Statistikk.module.css';
 import tellingCss from './Telling.module.css';
 import Tiltaksstatistikk from './Tiltaksstatistikk';
+import { getMiljø, Miljø } from '../miljøUtils';
 
 type Props = {
     navKontor: string;
@@ -40,7 +41,7 @@ const Utfallsstatistikk: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilO
                     className={tellingCss.presentert}
                 />
             </div>
-            {tiltakstatistikk && (
+            {tiltakstatistikk && getMiljø() !== Miljø.ProdGcp && (
                 <Tiltaksstatistikk
                     tiltakstatistikk={tiltakstatistikk}
                     antallFåttJobben={antallFåttJobben}

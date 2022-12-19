@@ -4,6 +4,7 @@ import { formaterDatoTilVisning, førsteDagIMåned, sisteDagIMåned } from '../d
 import Forespørsler from './Forespørsler';
 import Utfallsstatistikk from './Utfallsstatistikk';
 import css from './Statistikk.module.css';
+import { getMiljø, Miljø } from '../miljøUtils';
 
 type Props = {
     navKontor: string;
@@ -36,20 +37,35 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
             <Heading level="1" size="medium" className={css.tittel}>
                 Ditt NAV-kontor
             </Heading>
-            <div className={css.tidsperiode}>
-                <Select label="Velg periode" onChange={onTidsperiodeChange}>
-                    {tidsperioder.map((tidsperiode) => (
-                        <option
-                            value={tidsperiode.getTime()}
-                            key={tidsperiode.getTime()}
-                            className={css.tidsperiodeoption}
-                        >
-                            {formaterDatoTilVisning(tidsperiode)} til{' '}
-                            {formaterDatoTilVisning(sisteDagIMåned(new Date(tidsperiode)))}
-                        </option>
-                    ))}
-                </Select>
-            </div>
+            <>
+                {getMiljø() !== Miljø.ProdGcp ? (
+                    <div className={css.tidsperiode}>
+                        <Select label="Velg periode" onChange={onTidsperiodeChange}>
+                            {tidsperioder.map((tidsperiode) => (
+                                <option
+                                    value={tidsperiode.getTime()}
+                                    key={tidsperiode.getTime()}
+                                    className={css.tidsperiodeoption}
+                                >
+                                    {formaterDatoTilVisning(tidsperiode)} til{' '}
+                                    {formaterDatoTilVisning(sisteDagIMåned(new Date(tidsperiode)))}
+                                </option>
+                            ))}
+                        </Select>
+                    </div>
+                ) : (
+                    <p className={css.tidsperiodegammel}>
+                        <>Statistikk for perioden </>
+                        <time dateTime={fraOgMed.toISOString()}>
+                            {formaterDatoTilVisning(fraOgMed)}
+                        </time>
+                        <span> til </span>
+                        <time dateTime={tilOgMed.toISOString()}>
+                            {formaterDatoTilVisning(tilOgMed)}
+                        </time>
+                    </p>
+                )}
+            </>
             <Utfallsstatistikk navKontor={navKontor} fraOgMed={fraOgMed} tilOgMed={tilOgMed} />
             <Forespørsler navKontor={navKontor} fraOgMed={fraOgMed} tilOgMed={tilOgMed} />
         </div>

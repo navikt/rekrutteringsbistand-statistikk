@@ -8,6 +8,11 @@
     display: flex;
     justify-content: center;
 }
+.tidsperiodegammel {
+    text-align: center;
+    margin-top: var(--navds-spacing-1);
+    margin-bottom: var(--navds-spacing-6);
+}
 
 .tidsperiode {
     margin-top: var(--navds-spacing-1);
