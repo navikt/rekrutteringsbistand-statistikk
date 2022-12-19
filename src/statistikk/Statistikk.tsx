@@ -37,9 +37,13 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
                 Ditt NAV-kontor
             </Heading>
             <div className={css.tidsperiode}>
-                <Select label="" onChange={onTidsperiodeChange}>
+                <Select label="Velg periode" onChange={onTidsperiodeChange}>
                     {tidsperioder.map((tidsperiode) => (
-                        <option value={tidsperiode.getTime()} key={tidsperiode.getTime()}>
+                        <option
+                            value={tidsperiode.getTime()}
+                            key={tidsperiode.getTime()}
+                            className={css.tidsperiodeoption}
+                        >
                             {formaterDatoTilVisning(tidsperiode)} til{' '}
                             {formaterDatoTilVisning(sisteDagIMåned(new Date(tidsperiode)))}
                         </option>

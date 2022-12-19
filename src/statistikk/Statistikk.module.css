@@ -14,6 +14,15 @@
     margin-bottom: var(--navds-spacing-6);
 }
 
+.tidsperiodeoption {
+    text-align: center;
+}
+
+.tidsperiode label {
+    margin-top: 1rem;
+    width: 100%;
+}
+
 .tall {
     text-align: left;
     display: grid;
