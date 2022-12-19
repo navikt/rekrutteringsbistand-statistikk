@@ -10,15 +10,16 @@ type Props = {
 };
 
 const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
-    const [fraDato, setFraDato] = useState<Date | null>(null);
-    const [tilDato, setTilDato] = useState<Date | null>(null);
+    const [startDatoPeriode, setStartDatoPeriode] = useState<Date>(førsteDagIMåned(new Date()));
 
     const onTidsperiodeChange = (event: ChangeEvent<HTMLSelectElement>) => {
-        console.log('eeee', new Date(+event.target.value));
+        const startDatoPeriode = new Date(+event.target.value);
+        console.log('startDatoPeriode', startDatoPeriode);
+        setStartDatoPeriode(startDatoPeriode);
     };
 
     const antallMånederForHistorikk = 12;
-    const tid = Array<Number>(antallMånederForHistorikk)
+    const tidsperioder = Array<Number>(antallMånederForHistorikk)
         .fill(0, 0, antallMånederForHistorikk)
         .map((_, i) => {
             const statistikkTidspunkt = new Date();
@@ -28,24 +29,25 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
             return fraOgMed;
         });
 
-    const fraOgMed = førsteDagIMåned(new Date());
-    const tilOgMed = sisteDagIMåned(fraOgMed);
+    const fraOgMed = startDatoPeriode;
+    const tilOgMed = sisteDagIMåned(new Date(startDatoPeriode));
+    console.log('tidsperiode', fraOgMed, tilOgMed);
 
     return (
         <div className={css.statistikk}>
             <Heading level="1" size="medium" className={css.tittel}>
                 Ditt NAV-kontor
             </Heading>
-            <p className={css.tidsperiode}>
+            <div className={css.tidsperiode}>
                 <Select label="" onChange={onTidsperiodeChange}>
-                    {tid.map((tid) => (
-                        <option value={tid.getTime()} key={tid.getMilliseconds()}>
-                            {formaterDatoTilVisning(tid)} til{' '}
-                            {formaterDatoTilVisning(sisteDagIMåned(new Date(tid)))}
+                    {tidsperioder.map((tidsperiode) => (
+                        <option key={tidsperiode.getMilliseconds()} value={tidsperiode.getTime()}>
+                            {formaterDatoTilVisning(tidsperiode)} til{' '}
+                            {formaterDatoTilVisning(sisteDagIMåned(new Date(tidsperiode)))}
                         </option>
                     ))}
                 </Select>
-            </p>
+            </div>
             <Utfallsstatistikk navKontor={navKontor} fraOgMed={fraOgMed} tilOgMed={tilOgMed} />
             <Forespørsler navKontor={navKontor} fraOgMed={fraOgMed} tilOgMed={tilOgMed} />
         </div>
