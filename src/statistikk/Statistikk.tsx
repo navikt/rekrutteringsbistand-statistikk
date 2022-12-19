@@ -14,7 +14,7 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
     const [tilDato, setTilDato] = useState<Date | null>(null);
 
     const onTidsperiodeChange = (event: ChangeEvent<HTMLSelectElement>) => {
-        console.log('eeee', event.target.value);
+        console.log('eeee', new Date(+event.target.value));
     };
 
     const antallMånederForHistorikk = 12;
@@ -25,12 +25,11 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
             statistikkTidspunkt.setMonth(statistikkTidspunkt.getMonth() - i);
 
             const fraOgMed = førsteDagIMåned(new Date(statistikkTidspunkt));
-            const tilOgMed = sisteDagIMåned(new Date(statistikkTidspunkt));
-            return [fraOgMed, tilOgMed];
+            return fraOgMed;
         });
 
     const fraOgMed = førsteDagIMåned(new Date());
-    const tilOgMed = sisteDagIMåned(new Date());
+    const tilOgMed = sisteDagIMåned(fraOgMed);
 
     return (
         <div className={css.statistikk}>
@@ -40,14 +39,9 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
             <p className={css.tidsperiode}>
                 <Select label="" onChange={onTidsperiodeChange}>
                     {tid.map((tid) => (
-                        <option value={tid[0].getTime()} key={tid[0].getMilliseconds()}>
-                            <time dateTime={tid[0].toISOString()}>
-                                {formaterDatoTilVisning(tid[0])}
-                            </time>
-                            <span> til </span>
-                            <time dateTime={tid[1].toISOString()}>
-                                {formaterDatoTilVisning(tid[1])}
-                            </time>
+                        <option value={tid.getTime()} key={tid.getMilliseconds()}>
+                            {formaterDatoTilVisning(tid)} til{' '}
+                            {formaterDatoTilVisning(sisteDagIMåned(new Date(tid)))}
                         </option>
                     ))}
                 </Select>

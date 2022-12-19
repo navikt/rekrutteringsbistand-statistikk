@@ -1,5 +1,9 @@
 export const førsteDagIMåned = (dato: Date): Date => {
     dato.setDate(1);
+    dato.setHours(0);
+    dato.setMinutes(0);
+    dato.setSeconds(0);
+    dato.setMilliseconds(0);
 
     return dato;
 };
