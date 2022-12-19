@@ -14,7 +14,6 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
 
     const onTidsperiodeChange = (event: ChangeEvent<HTMLSelectElement>) => {
         const startDatoPeriode = new Date(+event.target.value);
-        console.log('startDatoPeriode', startDatoPeriode);
         setStartDatoPeriode(startDatoPeriode);
     };
 
@@ -31,7 +30,6 @@ const Statistikk: FunctionComponent<Props> = ({ navKontor }) => {
 
     const fraOgMed = startDatoPeriode;
     const tilOgMed = sisteDagIMåned(new Date(startDatoPeriode));
-    console.log('tidsperiode', fraOgMed, tilOgMed);
 
     return (
         <div className={css.statistikk}>
