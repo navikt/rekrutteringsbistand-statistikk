@@ -5,11 +5,27 @@
 .tittel,
 .tidsperiode {
     text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.tidsperiodegammel {
+    text-align: center;
+    margin-top: var(--navds-spacing-1);
+    margin-bottom: var(--navds-spacing-6);
 }
 
 .tidsperiode {
     margin-top: var(--navds-spacing-1);
     margin-bottom: var(--navds-spacing-6);
+}
+
+.tidsperiodeoption {
+    text-align: center;
+}
+
+.tidsperiode label {
+    margin-top: 1rem;
+    width: 100%;
 }
 
 .tall {

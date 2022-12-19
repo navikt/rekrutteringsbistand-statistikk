@@ -10,6 +10,15 @@ type Props = {
     tilOgMed: Date;
 };
 
+export const formaterSomProsentAvTotalen = (tall: number, antallTotalt: number) => {
+    if (tall > 0) {
+        const andelAvTotalen = tall / antallTotalt;
+        return Math.round(andelAvTotalen * 100) + '%';
+    } else {
+        return '0%';
+    }
+};
+
 const Forespørsler: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilOgMed }) => {
     const svarstatistikk = useSvarstatistikk(navKontor, fraOgMed, tilOgMed);
 
@@ -22,18 +31,9 @@ const Forespørsler: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilOgMed
 
     const antallTotalt = antallSvartJa + antallSvartNei + antallVenterPåSvar + antallUtløpteSvar;
 
-    const formaterSomProsentAvTotalen = (tall: number) => {
-        if (tall > 0) {
-            const andelAvTotalen = tall / antallTotalt;
-            return Math.round(andelAvTotalen * 100) + '%';
-        } else {
-            return '0%';
-        }
-    };
-
     return (
         <Panel className={css.forespørsler}>
-            <Heading level="2" size="small">
+            <Heading level="2" size="medium">
                 Stillinger delt med kandidater i Aktivitetsplanen
             </Heading>
             <div className={css.delingstatistikk}>
@@ -45,19 +45,26 @@ const Forespørsler: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilOgMed
                 />
                 <Svartelling
                     svartellingIkon={SvartellingIkon.Ja}
-                    oppsummering={formaterSomProsentAvTotalen(antallSvartJa) + ' svarte ja'}
+                    oppsummering={
+                        formaterSomProsentAvTotalen(antallSvartJa, antallTotalt) + ' svarte ja'
+                    }
                     detaljer="til at CV-en kan deles med arbeidsgiver"
                     forklaring={`(${antallSvartJa} av ${antallTotalt})`}
                 />
                 <Svartelling
                     svartellingIkon={SvartellingIkon.Nei}
-                    oppsummering={formaterSomProsentAvTotalen(antallSvartNei) + ' svarte nei'}
+                    oppsummering={
+                        formaterSomProsentAvTotalen(antallSvartNei, antallTotalt) + ' svarte nei'
+                    }
                     detaljer="til at CV-en kan deles med arbeidsgiver"
                     forklaring={`(${antallSvartNei} av ${antallTotalt})`}
                 />
                 <Svartelling
                     svartellingIkon={SvartellingIkon.SvarteIkke}
-                    oppsummering={formaterSomProsentAvTotalen(antallUtløpteSvar) + ' svarte ikke'}
+                    oppsummering={
+                        formaterSomProsentAvTotalen(antallUtløpteSvar, antallTotalt) +
+                        ' svarte ikke'
+                    }
                     detaljer="på om CV-en kan deles med arbeidsgiver"
                     forklaring={`(${antallUtløpteSvar} av ${antallTotalt})`}
                 />

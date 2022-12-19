@@ -3,6 +3,8 @@ import Telling from './Telling';
 import useUtfallsstatistikk from './useUtfallsstatistikk';
 import statistikkCss from './Statistikk.module.css';
 import tellingCss from './Telling.module.css';
+import Tiltaksstatistikk from './Tiltaksstatistikk';
+import { getMiljø, Miljø } from '../miljøUtils';
 
 type Props = {
     navKontor: string;
@@ -11,7 +13,7 @@ type Props = {
 };
 
 const Utfallsstatistikk: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilOgMed }) => {
-    const { antallPresentert, antallFåttJobben } = useUtfallsstatistikk(
+    const { antallPresentert, antallFåttJobben, tiltakstatistikk } = useUtfallsstatistikk(
         navKontor,
         fraOgMed,
         tilOgMed
@@ -26,17 +28,25 @@ const Utfallsstatistikk: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilO
     } har blitt presentert for arbeidsgiver`;
 
     return (
-        <div className={statistikkCss.tall}>
-            <Telling
-                tall={antallFåttJobben}
-                beskrivelse={beskrivelseForAntallFåttJobben}
-                className={tellingCss.fattJobb}
-            />
-            <Telling
-                tall={antallPresentert}
-                beskrivelse={beskrivelseForAntallPresentert}
-                className={tellingCss.presentert}
-            />
+        <div>
+            <div className={statistikkCss.tall}>
+                <Telling
+                    tall={antallFåttJobben}
+                    beskrivelse={beskrivelseForAntallFåttJobben}
+                    className={tellingCss.fattJobb}
+                />
+                <Telling
+                    tall={antallPresentert}
+                    beskrivelse={beskrivelseForAntallPresentert}
+                    className={tellingCss.presentert}
+                />
+            </div>
+            {tiltakstatistikk && getMiljø() !== Miljø.ProdGcp && (
+                <Tiltaksstatistikk
+                    tiltakstatistikk={tiltakstatistikk}
+                    antallFåttJobben={antallFåttJobben}
+                />
+            )}
         </div>
     );
 };

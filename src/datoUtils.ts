@@ -1,12 +1,14 @@
-export const førsteDagIInneværendeMåned = (): Date => {
-    const dato = new Date();
+export const førsteDagIMåned = (dato: Date): Date => {
     dato.setDate(1);
+    dato.setHours(0);
+    dato.setMinutes(0);
+    dato.setSeconds(0);
+    dato.setMilliseconds(0);
 
     return dato;
 };
 
-export const sisteDagIInneværendeMåned = (): Date => {
-    const dato = new Date();
+export const sisteDagIMåned = (dato: Date): Date => {
     dato.setMonth(dato.getMonth() + 1);
     dato.setDate(0);
 
@@ -25,6 +27,7 @@ export const formaterDatoTilVisning = (dato: Date): string => {
     return dato.toLocaleString('nb-NO', {
         day: 'numeric',
         month: 'long',
+        year: 'numeric',
     });
 };
 
