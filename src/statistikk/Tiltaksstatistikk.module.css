@@ -8,17 +8,29 @@
 .tiltaksstatistikkkategori {
     text-align: left;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
 }
 
 .kategoridetaljer {
+    display: block;
     margin: 0.5rem 0 0 0;
 }
 
 .kategoriprosent {
+    display: block;
     font-size: 2.5rem;
     font-weight: bold;
     margin-top: 1rem;
     margin-bottom: 0;
+}
+
+.kategorifordeling {
+    display: block;
+}
+
+@media (min-width: 1000px) {
+    .tiltaksstatistikkkategori {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }

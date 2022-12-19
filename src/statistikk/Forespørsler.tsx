@@ -33,7 +33,7 @@ const Forespørsler: FunctionComponent<Props> = ({ navKontor, fraOgMed, tilOgMed
 
     return (
         <Panel className={css.forespørsler}>
-            <Heading level="2" size="small">
+            <Heading level="2" size="medium">
                 Stillinger delt med kandidater i Aktivitetsplanen
             </Heading>
             <div className={css.delingstatistikk}>
