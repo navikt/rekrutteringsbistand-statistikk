@@ -5,14 +5,18 @@
 .periodeForKontor {
     display: flex;
     flex-direction: column;
+    height: 6rem;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: var(--navds-spacing-8);
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 48rem) {
     .periodeForKontor {
         flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 3rem;
     }
 }
 
