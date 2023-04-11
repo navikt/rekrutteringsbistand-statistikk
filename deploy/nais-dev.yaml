@@ -10,7 +10,7 @@ spec:
     image: {{ image }}
     port: 3000
     ingresses:
-        - https://rekrutteringsbistand.dev.intern.nav.no/rekrutteringsbistand-statistikk
+        - https://rekrutteringsbistand.intern.dev.nav.no/rekrutteringsbistand-statistikk
     liveness:
         initialDelay: 5
         path: /rekrutteringsbistand-statistikk/internal/isAlive
