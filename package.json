@@ -6,7 +6,7 @@
     "scripts": {
         "start": "cross-env VITE_MOCK=true vite",
         "start:export": "cross-env VITE_MOCK=true VITE_EXPORT=true vite",
-        "build": "cross-env VITE_EXPORT=true vite build",
+        "build": "cross-env VITE_EXPORT=true vite build --base=/rekrutteringsbistand-statistikk",
         "prepare": "husky install",
         "format": "prettier --write ."
     },
