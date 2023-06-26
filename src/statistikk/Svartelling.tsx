@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
-import { Dialog, DialogSuccess, SpeechBubble } from '@navikt/ds-icons';
 import css from './Svartelling.module.css';
 import { Detail, Label } from '@navikt/ds-react';
 import { ReactComponent as Kryssikon } from './kryss.svg';
+import { ChatCheckmarkIcon, ChatIcon, Chat2Icon } from '@navikt/aksel-icons';
 
 export enum SvartellingIkon {
     Delt,
@@ -27,20 +27,20 @@ const Svartelling: FunctionComponent<Props> = ({
     const ikon = (valgtIkon: SvartellingIkon) => {
         switch (valgtIkon) {
             case SvartellingIkon.Delt:
-                return <Dialog scale="2" className={css.antallStillinger}></Dialog>;
+                return <Chat2Icon fontSize="2" className={css.antallStillinger}></Chat2Icon>;
             case SvartellingIkon.Ja:
-                return <DialogSuccess className={css.svartJa}></DialogSuccess>;
+                return <ChatCheckmarkIcon className={css.svartJa}></ChatCheckmarkIcon>;
             case SvartellingIkon.Nei:
                 return (
                     <>
                         <span className={css.kryss}>
                             <Kryssikon />
                         </span>
-                        <SpeechBubble className={css.svartNei}></SpeechBubble>
+                        <ChatIcon className={css.svartNei}></ChatIcon>
                     </>
                 );
             case SvartellingIkon.SvarteIkke:
-                return <SpeechBubble className={css.ubesvart}></SpeechBubble>;
+                return <ChatIcon className={css.ubesvart}></ChatIcon>;
         }
     };
 
@@ -48,12 +48,8 @@ const Svartelling: FunctionComponent<Props> = ({
         <div className={css.svartelling}>
             {ikon(svartellingIkon)}
             <Label className={css.oppsummering}>{oppsummering}</Label>
-            <Detail size="small" className={css.detaljer}>
-                {detaljer}
-            </Detail>
-            <Detail size="small" className={css.detaljer}>
-                {forklaring}
-            </Detail>
+            <Detail className={css.detaljer}>{detaljer}</Detail>
+            <Detail className={css.detaljer}>{forklaring}</Detail>
         </div>
     );
 };

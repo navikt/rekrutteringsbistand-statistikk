@@ -26,6 +26,8 @@ const renderUtviklingsapp = async () => {
 const skalEksporteres = import.meta.env.VITE_EXPORT || import.meta.env.PROD;
 
 if (skalEksporteres) {
+    console.log('Eksporter!');
+
     Navspa.eksporter('rekrutteringsbistand-statistikk', AppMedRouter);
 } else {
     renderUtviklingsapp();

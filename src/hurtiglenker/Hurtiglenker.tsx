@@ -1,11 +1,11 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
+import { Heading } from '@navikt/ds-react';
+import { Link } from 'react-router-dom';
+import { ArrowRightIcon } from '@navikt/aksel-icons';
 import liste from './ikoner/liste.svg';
 import blyant from './ikoner/blyant.svg';
 import kvinne from './ikoner/kvinne.svg';
 import checkliste from './ikoner/checkliste.svg';
-import { Heading } from '@navikt/ds-react';
-import { Link } from 'react-router-dom';
-import { Next } from '@navikt/ds-icons';
 import css from './Hurtiglenker.module.css';
 
 const Hurtiglenker: FunctionComponent = () => {
@@ -47,7 +47,7 @@ const LenkepanelMedIkon: FunctionComponent<{
             <Heading level="2" size="medium">
                 {tittel}
             </Heading>
-            <Next />
+            <ArrowRightIcon />
         </div>
     </Link>
 );
