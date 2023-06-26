@@ -1,10 +1,10 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import Navspa from '@navikt/navspa';
 
-import App, { AppProps } from './App';
-import Utviklingsapp from './utviklingsapp/Utviklingsapp';
 import { createRoot } from 'react-dom/client';
 import { Router } from 'react-router-dom';
+import App, { AppProps } from './App';
+import Utviklingsapp from './utviklingsapp/Utviklingsapp';
 import './index.css';
 
 const AppMedRouter: FunctionComponent<AppProps> = (props: AppProps) => (

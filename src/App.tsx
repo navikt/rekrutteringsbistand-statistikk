@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import { Loader } from '@navikt/ds-react';
+import { History } from 'history';
 import Hurtiglenker from './hurtiglenker/Hurtiglenker';
 import Statistikk from './statistikk/Statistikk';
 import css from './App.module.css';
-import { History } from 'history';
 
 export type AppProps = {
     navKontor: string | null;
