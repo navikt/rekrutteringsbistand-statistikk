@@ -13,6 +13,9 @@ export default defineConfig(({ mode }) => {
             manifest: 'asset-manifest.json',
             chunkSizeWarningLimit: 1000,
         },
+        preview: {
+            port: 3001,
+        },
         plugins: [react(), svgrPlugin()],
     };
 });

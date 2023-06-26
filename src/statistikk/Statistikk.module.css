@@ -8,7 +8,7 @@
     height: 6rem;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: var(--navds-spacing-8);
+    margin-bottom: var(--a-spacing-8);
 }
 
 @media (min-width: 48rem) {

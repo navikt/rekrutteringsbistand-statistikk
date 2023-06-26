@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, ChangeEvent } from 'react';
+import { FunctionComponent, useState, ChangeEvent } from 'react';
 import { Heading, Select } from '@navikt/ds-react';
 import { formaterDatoTilVisning, førsteDagIMåned, sisteDagIMåned } from '../datoUtils';
 import Forespørsler from './Forespørsler';

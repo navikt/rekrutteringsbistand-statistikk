@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import Telling from './Telling';
 import useUtfallsstatistikk from './useUtfallsstatistikk';
 import statistikkCss from './Statistikk.module.css';

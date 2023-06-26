@@ -1,5 +1,5 @@
 import { Heading, Panel } from '@navikt/ds-react';
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import Svartelling, { SvartellingIkon } from './Svartelling';
 import useSvarstatistikk from './useSvarstatistikk';
 import css from './Forespørsler.module.css';

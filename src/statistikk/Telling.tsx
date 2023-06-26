@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from 'react';
-import css from './Telling.module.css';
+import { FunctionComponent } from 'react';
 import classNames from 'classnames';
+import css from './Telling.module.css';
 
 type Props = {
     tall: number;
