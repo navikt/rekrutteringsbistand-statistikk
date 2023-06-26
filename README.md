@@ -10,11 +10,8 @@ npm install
 
 ## Utvikling 
 
-```
-npm run start:mock
-```
+Kjør med mock:
 
-Uten mock:
 ```
 npm run start
 ```
